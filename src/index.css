@@ -1,13 +1,18 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.overflow-y-scroll::-webkit-scrollbar,
+.conversation-body > div::-webkit-scrollbar {
+  @apply w-[0px];
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.dropdown-link {
+  @apply flex py-1 px-3 hover:bg-slate-700 hover:text-white;
+}
+textarea {
+  @apply overflow-hidden;
+}
+.headlessui-menu-container > button {
+  @apply w-9 flex justify-center;
 }
