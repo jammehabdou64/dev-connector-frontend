@@ -9,13 +9,13 @@ export const loadUser = createAsyncThunk("fetch/profile", async () => {
       setAuthToken(localStorage["api-token"]);
 
       const { data } = await getApi("/profile/me");
-      return data.success ? data.message : {};
+      return data.success ? data.message : null;
     }
   } catch (error) {}
 });
 
 const initialState = {
-  auth: {},
+  auth: null,
   authLoading: true,
   isLoading: true,
   isAuth: false,
@@ -26,7 +26,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
-      state.auth = {};
+      state.auth = null;
       state.isAuth = false;
       localStorage.removeItem("api-token");
     },
@@ -41,22 +41,13 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loadUser.fulfilled, (state, { payload }) => {
-        if (payload) {
-          state.auth = payload;
-          state.isLoading = false;
-          if (Object.keys(payload).length > 0) {
-            state.isAuth = true;
-          } else {
-            state.auth = false;
-          }
-          return;
-        }
-        state.isAuth = false;
+        state.auth = payload;
+        state.isAuth = true;
         state.isLoading = false;
       })
       .addCase(loadUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.auth = {};
+        state.auth = null;
         localStorage.removeItem("api-token");
         state.isAuth = false;
       });

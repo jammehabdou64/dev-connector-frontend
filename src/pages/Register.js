@@ -15,7 +15,7 @@ const Register = () => {
     email: "",
     password: "",
   });
-  const { isAuth } = useSelector((state) => state.auth);
+  const { auth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const submit = async (e) => {
     try {
@@ -32,7 +32,7 @@ const Register = () => {
     }
   };
 
-  if (isAuth) {
+  if (auth) {
     return <Navigate replace to="/" />;
   }
   return (

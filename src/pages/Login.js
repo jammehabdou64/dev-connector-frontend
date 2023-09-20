@@ -11,7 +11,7 @@ const Login = () => {
     password: "",
   });
 
-  const { isAuth, isLoading } = useSelector((state) => state.auth);
+  const { auth, isLoading } = useSelector((state) => state.auth);
   const inputHandler = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -28,7 +28,7 @@ const Login = () => {
     }
   };
 
-  if (isAuth) {
+  if (auth) {
     return <Navigate replace to="/" />;
   }
   return isLoading ? (
