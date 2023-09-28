@@ -70,7 +70,7 @@ const Messages = () => {
     <VideoCall auth={auth} recipient={user} />
   ) : (
     <Layout>
-      <div className="flex-1 w-full   px-2 max-w-[500px] mx-auto md:max-w-[500px] h-full items-center -mt-4 flex   sm:px-6  ">
+      <div className="flex-1 w-full   px-2 max-w-[500px] mx-auto md:max-w-[500px] h-full items-center md:items-start  md:mt-10  flex   sm:px-6  ">
         <div className="conversations w-full border border-gray-700">
           <div className="conversations-header flex justify-between items-center p-3 bg-slate-900 w-full">
             <div className="flex  items-center">
@@ -89,7 +89,7 @@ const Messages = () => {
             </div>
           </div>
           <ScrollToBottom
-            className="conversation-body h-[365px] w-full "
+            className="conversation-body h-[365px]  w-full "
             initialScrollBehavior={"smooth"}
           >
             {messages?.map((message) => (

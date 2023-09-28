@@ -32,7 +32,20 @@ const CreateProfile = () => {
       e.preventDefault();
       const { data } = await postApi("/profile", formData);
       if (data.success) {
-        console.log(data.message);
+        return setFormData({
+          company: "",
+          website: "",
+          location: "",
+          status: "",
+          skills: "",
+          githubUsername: "",
+          bio: "",
+          youtube: "",
+          facebook: "",
+          twitter: "",
+          instagram: "",
+          linkedin: "",
+        });
       }
     } catch (error) {}
   };

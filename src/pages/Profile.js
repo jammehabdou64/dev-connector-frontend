@@ -43,10 +43,10 @@ const Profile = () => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className="h-screen w-full bg-gray-800 overflow-hidden text-white font-serif">
+    <div className="h-screen w-full bg-gray-800 overflow-hidden text-white font-blink">
       <Header />
 
-      <main className="mt-9 md:px-9  px-4 sm:px-10 pt-10 h-full overflow-y-scroll">
+      <main className="mt-10 md:px-9 px-[6.5px] xs:px-4 sm:px-10 pt-10 h-full overflow-y-scroll">
         <div className="mx-auto h-[400px]   max-w-4xl">
           <UserProfile
             profile={profile}
@@ -132,9 +132,9 @@ const Profile = () => {
                   <GithubRepos key={index} />
                 ))}
               </div>
+              <div className="h-28 "></div>
             </section>
           </div>
-          <div className="h-24"></div>
         </div>
       </main>
       <SmallMediaNav />

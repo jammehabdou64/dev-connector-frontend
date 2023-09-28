@@ -74,16 +74,18 @@ const Post = ({
               alt={author?.name}
               className="w-[40px] h-[40px]  sm:w-[50px] sm:h-[50px] object-center rounded-full"
             />
-            <div className="post-author-name  sm:font-medium">
-              {author.name}
+            <div className="flex items-center gap-2">
+              <h3 className="post-author-name font-semibold sm:text-lg  sm:font-medium">
+                {author.name}
+              </h3>
+              <div className="text-sm">
+                <Moment fromNow>{createAt}</Moment>
+              </div>
             </div>
           </Link>
-          <div className="text-sm">
-            <Moment fromNow>{createAt}</Moment>
-          </div>
         </div>
 
-        <div className={title ? "post-title mx-1 pt-1  text-sm" : "hidden"}>
+        <div className={title ? "post-title mx-1 pt-1  text-[15px]" : "hidden"}>
           {title ? title : ""}
         </div>
       </div>
@@ -149,17 +151,17 @@ const Post = ({
           <span className="text-sm">10</span>
         </div>
       </div>
-      <div className="comment px-2 py-3 border-t gap-2 border-gray-700 flex items-center justify-between">
+      <div className="comment px-1 py-3 border-t  border-gray-700 flex items-center justify-between">
         <img
           alt={auth?.user ? auth?.user.name : auth?.name}
           src={auth?.user ? auth?.user.avatar : auth.avatar}
-          className="w-[25px] h-[25px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
+          className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
         />
         <input
           type="text"
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
-          className="flex-1 p-2  outline-none bg-gray-800 rounded-full"
+          className="flex-1 p-[6px] ml-1  outline-none bg-gray-800 rounded-full"
           placeholder="comment ..."
         />
         <PaperAirplaneIcon

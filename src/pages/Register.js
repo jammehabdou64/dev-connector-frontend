@@ -40,7 +40,7 @@ const Register = () => {
       <form
         action=""
         method="post"
-        className="w-[400px] px-3"
+        className="w-full xs:w-[400px] px-3"
         onSubmit={(e) => submit(e)}
       >
         <div className="flex flex-col">

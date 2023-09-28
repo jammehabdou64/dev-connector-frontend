@@ -34,11 +34,11 @@ const Login = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <div className=" md:px-0 flex justify-center items-center h-screen bg-gray-900 ">
+    <div className=" md:px-0 w-full flex justify-center items-center h-screen bg-gray-900 ">
       <form
         action=""
         method="post"
-        className="w-[380px] sm:w-[400px] px-6 md:px-3"
+        className="w-full xs:w-[380px] sm:w-[400px] px-3 xs:px-6 md:px-3"
         onSubmit={(e) => submit(e)}
       >
         <div className="flex flex-col">
@@ -71,7 +71,7 @@ const Login = () => {
             onChange={(e) => inputHandler(e)}
           />
         </div>
-        <div className="flex justify-between my-4">
+        <div className="flex items-center justify-between my-4">
           <div>
             <input
               type="checkbox"
@@ -79,12 +79,18 @@ const Login = () => {
               name=""
               id="remember-me"
             />
-            <label htmlFor="remember-me " className="ml-1 text-gray-300">
+            <label
+              htmlFor="remember-me "
+              className=" text-[14.5px] xs:text-base xs:ml-1 text-gray-300"
+            >
               Remember me
             </label>
           </div>
           <div>
-            <Link to={"/password-recovery"} className="text-blue-400">
+            <Link
+              to={"/password-recovery"}
+              className="text-blue-400 text-[14.5px] xs:text-base "
+            >
               forgetten password
             </Link>
           </div>

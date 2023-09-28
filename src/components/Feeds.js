@@ -68,7 +68,7 @@ const Feeds = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <div className="feeds-container w-full max-w-[390px] relative top-0 z-10   mx-auto   sm:w-[400px]   lg:max-w-[420px] ">
+    <div className="feeds-container w-full px-[6.5px] xs:px-4 sm:px-8 md:px-0 mx-auto md:mx-0 relative top-0 z-10  lg:w-[500px]  max-w-[520px] ">
       <div className="post-container w-full py-3 px-3 sm:px-4 bg-slate-900">
         <div className="flex mt-2 pt-2 gap-2 ">
           <Link

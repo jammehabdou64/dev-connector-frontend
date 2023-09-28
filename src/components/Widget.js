@@ -5,7 +5,7 @@ const Widget = () => {
   const { auth } = useSelector((state) => state.auth);
   const friends = auth.user ? auth.user.friends : auth.friends;
   return (
-    <div className="py-5  w-full  px-3 bg-slate-900 shadow-xl">
+    <div className="py-5 w-[350px] hidden mt-5 lg:block min-h-[100px] h-fit px-3 bg-slate-900 shadow-xl">
       <h3 className="text-yellow-500 text-center text-lg">Friends</h3>
       {friends.map((friend, index) => (
         <Link
@@ -18,7 +18,7 @@ const Widget = () => {
             alt="ww"
             className="w-[27px] h-[27px] rounded-full"
           />
-          <p>{friend?.name}</p>
+          <p className="text-lg">{friend?.name}</p>
         </Link>
       ))}
     </div>

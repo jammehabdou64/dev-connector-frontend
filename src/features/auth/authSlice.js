@@ -32,7 +32,7 @@ const authSlice = createSlice({
     },
 
     updateAuth(state, { payload }) {
-      state.auth = { ...payload };
+      state.auth = payload;
     },
   },
   extraReducers: (build) => {
