@@ -11,14 +11,14 @@ const Widget = () => {
         <Link
           to={`/message/${friend?.name?.replace(/\s/g, "-")}/${friend?._id}`}
           key={index}
-          className="flex py-1 items-center gap-3"
+          className="flex px-1 py-1 items-center mt-2 gap-3"
         >
           <img
             src={friend?.avatar}
             alt="ww"
-            className="w-[27px] h-[27px] rounded-full"
+            className="w-[30px] h-[30px] rounded-full"
           />
-          <p className="text-lg">{friend?.name}</p>
+          <p className="text-lg font-medium">{friend?.name}</p>
         </Link>
       ))}
     </div>

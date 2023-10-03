@@ -26,14 +26,14 @@ const ChangePassword = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   return (
     <Layout>
-      <div className="px-6 mt-6 md:mt-2 ">
+      <div className=" px-3 xs:px-6 sm:px-16 md:px-0 mt-6 md:mt-2 ">
         <form
           action=""
           method="post"
           onSubmit={(e) => submit(e)}
           className="px-4  md:px-4 py-6 bg-slate-900"
         >
-          <h3 className="font-semibold xs:text-3xl text-center py-2">
+          <h3 className="font-semibold text-xl xs:text-3xl text-center py-2">
             Change Password
           </h3>
           <div className="flex flex-col mt-2">

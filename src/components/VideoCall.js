@@ -32,11 +32,13 @@ const VideoCall = ({ recipient, auth }) => {
             className="my-video w-40 h-40 absolute -bottom-4 right-0"
             autoPlay
             ref={myVideo}
+            muted
           ></video>
           <video
             className="partner-video w-full h-full"
             ref={partnerVideo}
             autoPlay
+            muted
           ></video>
         </div>
       </div>

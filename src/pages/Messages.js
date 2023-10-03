@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   PaperAirplaneIcon,
-  VideoCameraIcon,
+  // VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 import Moment from "react-moment";
 import ScrollToBottom from "react-scroll-to-bottom";
@@ -11,18 +11,18 @@ import Layout from "../components/Layout";
 import { getApi, postApi } from "../Api";
 import Spinner from "../components/Spinner";
 // import { v4 as uuidv4 } from "uuid";
-import VideoCall from "../components/VideoCall";
-import { useSelector } from "react-redux";
+// import VideoCall from "../components/VideoCall";
+// import { useSelector } from "react-redux";
 
 const Messages = () => {
   const [user, setUser] = useState({});
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [calling, setCalling] = useState(false);
+  // const [calling, setCalling] = useState(false);
   const { id } = useParams();
 
-  const { auth } = useSelector((state) => state.auth);
+  // const { auth } = useSelector((state) => state.auth);
 
   // const navigate = useNavigate();
 
@@ -60,17 +60,15 @@ const Messages = () => {
     }
   };
 
-  const videoCall = () => {
-    return setCalling(true);
-    // return navigate(`/video/${uuidv4()}/${user?._id}`);
-  };
+  // const videoCall = () => {
+  //   return setCalling(true);
+  //   // return navigate(`/video/${uuidv4()}/${user?._id}`);
+  // };
   return loading ? (
     <Spinner />
-  ) : calling ? (
-    <VideoCall auth={auth} recipient={user} />
   ) : (
     <Layout>
-      <div className="flex-1 w-full   px-2 max-w-[500px] mx-auto md:max-w-[500px] h-full items-center md:items-start  md:mt-10  flex   sm:px-6  ">
+      <div className="flex-1 w-full   px-2  mx-auto h-full items-center md:items-start  md:mt-10  flex   sm:px-6  ">
         <div className="conversations w-full border border-gray-700">
           <div className="conversations-header flex justify-between items-center p-3 bg-slate-900 w-full">
             <div className="flex  items-center">
@@ -82,10 +80,10 @@ const Messages = () => {
               <span className="text-lg ml-4">{user?.name}</span>
             </div>
             <div>
-              <VideoCameraIcon
+              {/* <VideoCameraIcon
                 className="w-7 cursor-pointer"
                 onClick={() => videoCall()}
-              />
+              /> */}
             </div>
           </div>
           <ScrollToBottom

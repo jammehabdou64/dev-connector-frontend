@@ -1,6 +1,5 @@
 import {
   HomeIcon,
-  BriefcaseIcon,
   EnvelopeIcon,
   BellIcon,
   UserGroupIcon,
@@ -12,23 +11,13 @@ import { useEffect } from "react";
 import { fetchNotification } from "../features/notificationSlice";
 import { fetchMessage } from "../features/messageSlice";
 import { fetchFriendRequest } from "../features/FriendRequestSlice";
-import { Menu } from "@headlessui/react";
-import DropDownLink from "./DropDownLink";
-import { logout } from "../features/auth/authSlice";
+import Modal from "./Modal";
+import { setModal } from "../features/modalSlice";
 
 const NavLists = ({ cssStyle, run = false }) => {
-  const { auth } = useSelector((state) => state.auth);
-
-  const logoutDispatch = useDispatch();
-
-  const logoutHandler = (event) => {
-    try {
-      event.preventDefault();
-      logoutDispatch(logout());
-      window.location.href = "/login";
-      return;
-    } catch (error) {}
-  };
+  const state = useSelector((state) => state);
+  const { auth } = state.auth;
+  const { showModal } = state.modal;
 
   const dispatch = useDispatch();
   const {
@@ -59,18 +48,18 @@ const NavLists = ({ cssStyle, run = false }) => {
     },
 
     {
-      name: "Find Friends",
+      name: "connect",
       path: "/find-friends",
       Icon: UserGroupIcon,
       nums: numsOfRequest,
     },
 
-    {
-      name: "Jobs",
-      path: "/jobs",
-      Icon: BriefcaseIcon,
-      nums: 0,
-    },
+    // {
+    //   name: "Jobs",
+    //   path: "/jobs",
+    //   Icon: BriefcaseIcon,
+    //   nums: 0,
+    // },
 
     {
       name: "Messages",
@@ -106,41 +95,18 @@ const NavLists = ({ cssStyle, run = false }) => {
         </li>
       ))}
       <li className="hidden sm:inline-block">
-        <Menu
-          as={"div"}
-          className="headlessui-menu-container relative  inline-block"
+        <div
+          className="mt-[2px] relative left-0 top-0  cursor-pointer  "
+          onClick={() => dispatch(setModal())}
         >
-          <Menu.Button>
-            <div className="mt-[2px]">
-              <img
-                alt={auth?.user ? auth?.user.name : auth?.name}
-                src={auth?.user ? auth?.user.avatar : auth.avatar}
-                className="rounded-full w-7 h-7 object-center"
-              />
-              <p className="hidden lg:inline-block">me</p>
-            </div>
-          </Menu.Button>
-          <Menu.Items
-            className={
-              "absolute bg-gray-900 right-0 w-40  origin-top-right shadow-lg"
-            }
-          >
-            <Menu.Item>
-              <DropDownLink to={"/change-password"} className="dropdown-link">
-                change password
-              </DropDownLink>
-            </Menu.Item>
-            <Menu.Item>
-              <DropDownLink
-                to={"/logout"}
-                onClick={logoutHandler}
-                className="dropdown-link"
-              >
-                logout
-              </DropDownLink>
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+          <img
+            alt={auth?.user ? auth?.user.name : auth?.name}
+            src={auth?.user ? auth?.user.avatar : auth.avatar}
+            className="rounded-full w-7 h-7 object-center"
+          />
+          <p className="hidden lg:inline-block">me</p>
+          {showModal ? <Modal /> : ""}
+        </div>
       </li>
     </ul>
   );

@@ -6,19 +6,22 @@ import SmallMediaNav from "./SmallMediaNav";
 import { useSocket } from "../Provider/Socket";
 import { useSelector } from "react-redux";
 import IncomingCall from "./IncomingCall";
+import PostFeedModal from "./PostFeedModal";
 
 const Layout = ({ children }) => {
   const { socket } = useSocket();
   const [incomingCall, setIncomingCall] = useState(false);
   const [callerInfo, setCaller] = useState({});
 
-  const { auth } = useSelector((state) => state.auth);
+  const {
+    auth: { auth },
+    modal: { showPostFeedModal },
+  } = useSelector((state) => state);
+  // console.log({ postFeedModal });
 
   useEffect(() => {
     socket.emit("user-join", auth?.user ? auth?.user : auth);
     socket.on("incoming-call", (data) => {
-      // console.log();
-
       setCaller(data);
       setIncomingCall(true);
     });
@@ -26,8 +29,10 @@ const Layout = ({ children }) => {
   return incomingCall ? (
     <IncomingCall caller={callerInfo} />
   ) : (
-    <div className="w-full h-screen bg-gray-850 font-blink overflow-y-scroll text-white ">
+    <div className="w-full h-screen relative top-0 bg-gray-850 font-blink overflow-y-scroll text-white ">
       <Header />
+      {showPostFeedModal && <PostFeedModal />}
+
       <div className="max-w-6xl mt-10  mx-auto h-full">
         <div className="flex w-full justify-center gap-4 pt-6 mt-7 md:pt-6 h-full  md:px-16 lg:px-10">
           <Sidebar />

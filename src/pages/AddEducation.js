@@ -40,7 +40,7 @@ const AddEducation = () => {
     <Layout>
       <section className="w-full bg-slate-900  py-3 px-4">
         <h2 className="text-center font-semibold text-lg my-3">
-          Add An Experience
+          Add An Education
         </h2>
         <div className="form-container">
           <form action="" method="post">
