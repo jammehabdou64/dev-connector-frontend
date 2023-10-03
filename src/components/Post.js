@@ -67,14 +67,14 @@ const Post = ({
         <div className="post-author-details flex items-center justify-between ">
           <Link
             to={`/profile/${author.name.replace(/\s/g, "-")}/${author._id}`}
-            className="flex items-center flex-1 gap-3"
+            className="flex items-center  flex-1 gap-3"
           >
             <img
               src={author?.avatar}
               alt={author?.name}
               className="w-[40px] h-[40px]  sm:w-[50px] sm:h-[50px] object-center rounded-full"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col leading-[0] xs:flex-row xs:items-center gap-2">
               <h3 className="post-author-name font-semibold sm:text-lg  sm:font-medium">
                 {author.name}
               </h3>
