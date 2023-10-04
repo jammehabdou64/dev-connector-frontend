@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
   // console.log({ postFeedModal });
 
   useEffect(() => {
-    socket.emit("user-join", auth?.user ? auth?.user : auth);
+    socket.emit("user-join", auth);
     socket.on("incoming-call", (data) => {
       setCaller(data);
       setIncomingCall(true);

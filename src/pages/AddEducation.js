@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { putApi } from "../Api";
+import Auth from "../utils/Auth";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AddEducation = () => {
+  const { auth } = useSelector((state) => state.auth);
+  const user = new Auth(auth);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     school: "",
     degree: "",
@@ -23,7 +29,7 @@ const AddEducation = () => {
       const { data } = await putApi("/profile/education", formData);
       if (data.success) {
         console.log(data.message);
-        return setFormData({
+        setFormData({
           school: "",
           degree: "",
           fieldofstudy: "",
@@ -32,6 +38,8 @@ const AddEducation = () => {
           current: false,
           description: "",
         });
+
+        return navigate(`/profile/${user.slug}/${user._id}`);
       }
     } catch (error) {}
   };

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { postApi } from "../Api";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/Auth";
 
 const CreateProfile = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +21,10 @@ const CreateProfile = () => {
     linkedin: "",
   });
 
+  const { auth } = useSelector((state) => state.auth);
+  const user = new Auth(auth);
+
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const onChangeHandler = (e) =>
@@ -32,7 +39,7 @@ const CreateProfile = () => {
       e.preventDefault();
       const { data } = await postApi("/profile", formData);
       if (data.success) {
-        return setFormData({
+        setFormData({
           company: "",
           website: "",
           location: "",
@@ -46,6 +53,7 @@ const CreateProfile = () => {
           instagram: "",
           linkedin: "",
         });
+        return navigate(`/profile/${user.slug}/${user._id}`);
       }
     } catch (error) {}
   };

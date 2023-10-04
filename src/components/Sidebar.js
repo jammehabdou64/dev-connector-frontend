@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
   const { auth } = useSelector((state) => state.auth);
   return (
-    <div className="mt-5 hidden md:block py-5 px-1 bg-slate-900 shadow-2xl w-[220px] h-fit">
+    <div className="mt-5 hidden md:block py-5 px-1 bg-slate-900 shadow-2xl sticky top-4 w-[220px] h-fit">
       <div className="user ">
         <div className="flex justify-center">
           <img

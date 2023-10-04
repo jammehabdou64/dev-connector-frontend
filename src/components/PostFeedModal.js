@@ -15,29 +15,26 @@ const PostFeedModal = () => {
     video: "",
   });
 
+  const [imageLength, setImageLength] = useState(0);
   const [disableButton, setDisableButton] = useState(true);
 
   useEffect(() => {
     if (
-      formData?.text.length > 0 ||
-      formData?.title.length > 0 ||
-      formData?.image.length > 0 ||
-      formData?.video.length > 0
+      formData.text?.length > 0 ||
+      formData.title?.length > 0 ||
+      imageLength > 0
     ) {
       return setDisableButton(false);
     }
     return setDisableButton(true);
-  }, [formData]);
+  }, [formData, imageLength]);
 
   const inputChangeHandler = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const imageChange = (e) => {
     setFormData({ ...formData, image: e.target.files[0] });
-  };
-
-  const videoChange = (e) => {
-    setFormData({ ...formData, video: e.target.files[0] });
+    setImageLength(1);
   };
 
   const submit = async (e) => {
@@ -56,17 +53,17 @@ const PostFeedModal = () => {
       const { data } = await postApi("/posts", jsFormData);
       if (data.success) {
         dispatch(addPost(data.message));
-        setFormData({
+        return setFormData({
           ...formData,
           image: "",
           text: "",
           title: "",
           video: "",
         });
-        return dispatch(setPostFeedModal());
       }
     } catch (error) {
-      console.log(error);
+    } finally {
+      dispatch(setPostFeedModal());
     }
   };
 
@@ -125,7 +122,7 @@ const PostFeedModal = () => {
               type="file"
               className="hidden"
               id="select-video"
-              onChange={(e) => videoChange(e)}
+              onChange={(e) => imageChange(e)}
             />
             <label
               htmlFor="select-video"

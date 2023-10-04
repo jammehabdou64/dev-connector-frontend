@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { putApi } from "../Api";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/Auth";
+import { useSelector } from "react-redux";
 
 const AddExperience = () => {
+  const { auth } = useSelector((state) => state.auth);
+  const user = new Auth(auth);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -24,7 +30,7 @@ const AddExperience = () => {
       const { data } = await putApi("/profile/experience", formData);
       if (data.success) {
         console.log(data.message);
-        return setFormData({
+        setFormData({
           ...formData,
           title: "",
           company: "",
@@ -34,6 +40,7 @@ const AddExperience = () => {
           current: false,
           description: "",
         });
+        return navigate(`/profile/${user.slug}/${user._id}`);
       }
     } catch (error) {}
   };
