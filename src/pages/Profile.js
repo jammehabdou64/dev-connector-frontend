@@ -55,13 +55,13 @@ const Profile = () => {
             auth={auth}
           />
 
-          <section className="bio bg-slate-900 mt-8 py-4 px-3 ">
+          <div className="bio bg-slate-900 mt-8 py-4 px-3 ">
             <h3 className=" py-2 mt-2 text-lg flex justify-center  text-yellow-500  font-medium md:font-semibold text-center md:text-xl">
               {profile?.user?.name}'s Bio{" "}
             </h3>
             <p className="px-2 text-center">{profile?.bio}</p>
-          </section>
-          <section className="skills-set w-full py-4 bg-slate-900  mt-4 px-3">
+          </div>
+          <div className="skills-set w-full py-4 bg-slate-900  mt-4 px-3">
             <h2 className=" py-2 my-1 text-lg font-medium md:font-semibold md:text-xl text-yellow-500 text-center">
               Skill set
             </h2>
@@ -75,10 +75,10 @@ const Profile = () => {
                 </li>
               ))}
             </ul>
-          </section>
+          </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-3 mt-4 ">
-            <div className="w-full md:w-1/3 flex flex-col gap-5 pt-0 md:pt-14">
-              <section className="w-full md:w-64 py-4 bg-slate-900  mt-4 px-3 experience-container">
+            <div className="w-full md:w-1/3 flex xs:flex-col sm:flex-row  md:flex-col gap-5 pt-0 md:pt-14">
+              <div className="w-full md:w-64 py-4 bg-slate-900  mt-4 px-3 experience-container">
                 <div className="">
                   <h2 className=" py-2 my-1 text-lg font-medium md:font-semibold md:text-xl text-yellow-500 text-center">
                     Experience
@@ -97,9 +97,9 @@ const Profile = () => {
                     ))}
                   </div>
                 </div>
-              </section>
+              </div>
 
-              <section className="w-full md:w-64  py-4 bg-slate-900  mt-4 px-3 education-container">
+              <div className="w-full md:w-64  py-4 bg-slate-900  mt-4 px-3 education-container">
                 <div className="skills-set">
                   <h2 className=" py-2 my-1 text-lg font-medium md:font-semibold md:text-xl text-yellow-500 text-center">
                     Education
@@ -119,10 +119,10 @@ const Profile = () => {
                     ))}
                   </div>
                 </div>
-              </section>
+              </div>
             </div>
 
-            <section className="flex-1 w-full pt-0 md:pt-1 github-repost-container">
+            <div className="flex-1 w-full pt-0 md:pt-1 github-repost-container">
               <div>
                 <h3 className="text-center text-yellow-500 text-lg font-medium md:font-semibold md:text-xl my-3 py-2">
                   Github Reposts
@@ -132,8 +132,8 @@ const Profile = () => {
                   <GithubRepos key={index} />
                 ))}
               </div>
-              <div className="h-28 "></div>
-            </section>
+              <div className="h-28 lg:h-36 lg:mt-20"></div>
+            </div>
           </div>
         </div>
       </main>

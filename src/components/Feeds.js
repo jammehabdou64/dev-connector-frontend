@@ -30,17 +30,17 @@ const Feeds = () => {
           <img
             alt={auth?.user ? auth?.user.name : auth?.name}
             src={auth?.user ? auth?.user.avatar : auth.avatar}
-            className="w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] object-center rounded-full"
+            className="w-[35px] h-[35px] sm:w-[40px] sm:h-[40px] object-center rounded-full"
           />
 
           <div className="flex-1">
             <form action="" method="post" className="w-full relative top-0">
-              <textarea
+              <input
                 type="text"
                 name="text"
                 id=""
                 className="h-10 sm:h-11 w-full text-sm p-3 outline-none bg-gray-700 rounded-full"
-                placeholder="post feed"
+                placeholder="Write something"
                 onClick={() => dispatch(setPostFeedModal())}
               />{" "}
             </form>

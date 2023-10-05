@@ -17,7 +17,7 @@ const Header = () => {
         <nav className="flex  py-2 items-center md:gap-4 lg:gap-1 sm:gap-0 justify-between">
           <Link
             to={"/"}
-            className="logo text-lg xs:text-xl lg:font-extrabold font-medium sm:font-semibold text-yellow-500 sm:text-2xl md:text-3xl lg:text-4xl"
+            className="logo text-lg xs:text-xl lg:font-extrabold font-medium sm:font-semibold text-yellow-500 sm:text-2xl md:text-3xl lg:text-3xl"
           >
             Gambtech
           </Link>

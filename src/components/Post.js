@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import {
   ChatBubbleLeftEllipsisIcon,
-  PaperAirplaneIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import Moment from "react-moment";
@@ -151,23 +150,32 @@ const Post = ({
           <span className="text-sm">10</span>
         </div>
       </div>
-      <div className="comment px-1 py-3 border-t  border-gray-700 flex items-center justify-between">
+      <div className="comment px-1 py-2 border-t  border-gray-700 flex items-center justify-between">
         <img
           alt={auth?.user ? auth?.user.name : auth?.name}
           src={auth?.user ? auth?.user.avatar : auth.avatar}
           className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
         />
-        <input
-          type="text"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          className="flex-1 p-[6px] ml-1  outline-none bg-gray-800 rounded-full"
-          placeholder="comment ..."
-        />
-        <PaperAirplaneIcon
+        <form
+          action=""
+          className="flex-1 px-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            return comment(id, auth?.user ? auth?.user : auth);
+          }}
+        >
+          <input
+            type="text"
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+            className=" p-3   w-full outline-none bg-gray-800 rounded-full"
+            placeholder="comment ..."
+          />
+        </form>
+        {/* <PaperAirplaneIcon
           className="w-6 sm:w-7   cursor-pointer"
           onClick={() => comment(id, auth?.user ? auth?.user : auth)}
-        />
+        /> */}
       </div>
     </div>
   );

@@ -1,13 +1,13 @@
 import Layout from "../components/Layout";
 import FriendSuggestion from "../components/FriendSuggestion";
 import { useEffect, useState } from "react";
-import { getApi, postApi } from "../Api";
+import { deleteApi, getApi, postApi } from "../Api";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 
 const DisplayRequest = ({ request, accept, remove, confirm }) => {
   return (
-    <div className="w-32 p-2 bg-slate-900 flex flex-col items-center">
+    <div className="w-40 p-2 bg-slate-900 flex flex-col items-center">
       <Link
         to={`/profile/${request?.sender.name.replace(/\s/g, "-")}/${
           request?.sender?._id
@@ -30,13 +30,16 @@ const DisplayRequest = ({ request, accept, remove, confirm }) => {
         >
           confirm
         </button>
-        <p className={`${confirm ? "block" : "hidden"}`}>friend</p>
-        <button
-          className="p-1 bg-slate-700 text-yellow-600 w-full"
-          onClick={() => remove(request._id)}
-        >
-          remove
-        </button>
+        {confirm ? (
+          <p className="text-base text-center">friend</p>
+        ) : (
+          <button
+            className="p-1 bg-slate-700 text-yellow-600 w-full"
+            onClick={() => remove(request._id)}
+          >
+            remove
+          </button>
+        )}
       </div>
     </div>
   );
@@ -75,7 +78,8 @@ const FindFriends = () => {
 
   const remove = async (id) => {
     try {
-      console.log(id);
+      const { data } = await deleteApi(`/friend-request/${id}`);
+      return data;
     } catch (error) {}
   };
   return isLoading ? (

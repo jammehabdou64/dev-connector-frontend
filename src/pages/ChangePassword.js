@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
-import { patchApi } from "../Api";
+import { putApi } from "../Api";
 
 const ChangePassword = () => {
   const [error, setError] = useState({});
@@ -15,7 +15,7 @@ const ChangePassword = () => {
     try {
       e.preventDefault();
       // return console.log(formData);
-      const { data } = await patchApi("/auth/change-password", formData);
+      const { data } = await putApi("/auth/change-password", formData);
       console.log(data);
     } catch (error) {
       setError(error?.response?.data?.error);
@@ -46,7 +46,7 @@ const ChangePassword = () => {
               placeholder="old password"
               name="oldPassword"
               className={`outline-none bg-gray-700 py-2 px-4 rounded-md text-white ${
-                error.old ? "border-red-600 border" : ""
+                error.oldPassword ? "border-red-600 border" : ""
               }`}
               onChange={(e) => inputHandler(e)}
             />

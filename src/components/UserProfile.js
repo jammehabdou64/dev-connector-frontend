@@ -96,7 +96,7 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
                 to={"/profile/create"}
                 className="py-1 px-2 bg-yellow-500 text-center rounded-md text-slate-950"
               >
-                Create Profile
+                {auth?.user ? "Edit Profile" : "Create Profile"}
               </Link>
               <Link
                 to={"/education/create"}
