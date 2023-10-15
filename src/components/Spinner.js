@@ -1,7 +1,7 @@
 import React from "react";
 const Spinner = () => {
   return (
-    <div role="status" className="flex h-screen bg-gray-850 justify-center">
+    <div role="status" className="flex h-screen bg-dark justify-center">
       <div className=" mt-10 pt-10 ">
         <svg
           aria-hidden="true"

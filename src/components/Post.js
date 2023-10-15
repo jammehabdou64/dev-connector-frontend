@@ -61,7 +61,7 @@ const Post = ({
     } catch (error) {}
   };
   return (
-    <div className="post mt-8 bg-slate-900">
+    <div className="post mt-8 bg-black">
       <div className="post-author px-3 py-4 ">
         <div className="post-author-details flex items-center justify-between ">
           <Link
@@ -88,7 +88,7 @@ const Post = ({
           {title ? title : ""}
         </div>
       </div>
-      <div className={`${text ? "p-2 " : "post-body"} `}>
+      <div className={`${text ? "p-2 " : "post-body bg-white"} `}>
         {image ? (
           <img
             src={image}
@@ -106,7 +106,7 @@ const Post = ({
         )}
       </div>
       {toggleComment ? (
-        <div className="text-sm bg-slate-900 py-2">
+        <div className="text-sm bg-black py-2">
           {comments?.map((item, index) => (
             <PostComments
               createdAt={item.createAt}
@@ -119,7 +119,7 @@ const Post = ({
       ) : (
         ""
       )}
-      <div className="flex p-4 justify-between bg-slate-900 post-reactions">
+      <div className="flex p-4 justify-between bg-black post-reactions">
         <div className="flex gap-2 items-center">
           {checkIfLike(auth?._id, likes) ? (
             <HeartIcon
@@ -150,7 +150,7 @@ const Post = ({
           <span className="text-sm">10</span>
         </div>
       </div>
-      <div className="comment px-1 py-2 border-t  border-gray-700 flex items-center justify-between">
+      <div className="comment px-1 py-2 border-t  border-dark flex items-center justify-between">
         <img
           alt={auth?.user ? auth?.user.name : auth?.name}
           src={auth?.user ? auth?.user.avatar : auth.avatar}
@@ -168,14 +168,10 @@ const Post = ({
             type="text"
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
-            className=" p-3   w-full outline-none bg-gray-800 rounded-full"
+            className=" p-3   w-full outline-none bg-dark rounded-full"
             placeholder="comment ..."
           />
         </form>
-        {/* <PaperAirplaneIcon
-          className="w-6 sm:w-7   cursor-pointer"
-          onClick={() => comment(id, auth?.user ? auth?.user : auth)}
-        /> */}
       </div>
     </div>
   );

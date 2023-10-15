@@ -24,7 +24,7 @@ const Notifications = () => {
     <Spinner />
   ) : (
     <Layout>
-      <div className="notifications  lg:w-full flex-1 ">
+      <div className="notifications px-[6.5px] xs:px-4 sm:px-8 md:px-0  lg:w-full flex-1 ">
         {notifications.map((notification, index) => (
           <Notification
             key={index}

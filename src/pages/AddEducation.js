@@ -15,7 +15,7 @@ const AddEducation = () => {
     fieldofstudy: "",
     from: "",
     to: "",
-    current: "",
+    current: false,
     description: "",
   });
   const onChangeHandler = (e) =>
@@ -28,7 +28,6 @@ const AddEducation = () => {
       e.preventDefault();
       const { data } = await putApi("/profile/education", formData);
       if (data.success) {
-        console.log(data.message);
         setFormData({
           school: "",
           degree: "",
@@ -46,7 +45,7 @@ const AddEducation = () => {
 
   return (
     <Layout>
-      <section className="w-full bg-slate-900  py-3 px-4">
+      <section className="w-full bg-black  py-3 px-4">
         <h2 className="text-center font-semibold text-lg my-3">
           Add An Education
         </h2>
@@ -59,7 +58,7 @@ const AddEducation = () => {
               <input
                 type="text"
                 placeholder="School or Bootcamp"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="school"
                 name="school"
                 onChange={onChangeHandler}
@@ -73,7 +72,7 @@ const AddEducation = () => {
               <input
                 type="text"
                 placeholder="Field Of Study"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="fieldofstudy"
                 name="fieldofstudy"
                 onChange={onChangeHandler}
@@ -87,7 +86,7 @@ const AddEducation = () => {
               <input
                 type="text"
                 placeholder=" degree"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="degree"
                 name="degree"
                 onChange={onChangeHandler}
@@ -100,7 +99,7 @@ const AddEducation = () => {
               </label>
               <input
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="from"
                 name="from"
                 onChange={onChangeHandler}
@@ -128,7 +127,7 @@ const AddEducation = () => {
               </label>
               <input
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="to"
                 name="to"
                 disabled={toDateDisabled ? "disabled" : ""}
@@ -142,7 +141,7 @@ const AddEducation = () => {
               </label>
               <textarea
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="description"
                 name="description"
                 onChange={onChangeHandler}

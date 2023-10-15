@@ -31,7 +31,7 @@ const ChangePassword = () => {
           action=""
           method="post"
           onSubmit={(e) => submit(e)}
-          className="px-4  md:px-4 py-6 bg-slate-900"
+          className="px-4  md:px-4 py-6 bg-black"
         >
           <h3 className="font-semibold text-xl xs:text-3xl text-center py-2">
             Change Password
@@ -45,7 +45,7 @@ const ChangePassword = () => {
               type="password"
               placeholder="old password"
               name="oldPassword"
-              className={`outline-none bg-gray-700 py-2 px-4 rounded-md text-white ${
+              className={`outline-none bg-dark py-2 px-4 rounded-md text-white ${
                 error.oldPassword ? "border-red-600 border" : ""
               }`}
               onChange={(e) => inputHandler(e)}
@@ -63,7 +63,7 @@ const ChangePassword = () => {
               type="password"
               placeholder="old password"
               name="newPassword"
-              className={`outline-none bg-gray-700 py-2 px-4 rounded-md text-white ${
+              className={`outline-none bg-dark py-2 px-4 rounded-md text-white ${
                 error.newPassword ? "border-red-600 border" : ""
               }`}
               onChange={(e) => inputHandler(e)}
@@ -81,7 +81,7 @@ const ChangePassword = () => {
               type="password"
               placeholder="confirm-password"
               name="confirmPassword"
-              className={`outline-none bg-gray-700 py-2 px-4 rounded-md text-white ${
+              className={`outline-none bg-dark py-2 px-4 rounded-md text-white ${
                 error.confirmPassword ? "border-red-600 border" : ""
               }`}
               onChange={(e) => inputHandler(e)}

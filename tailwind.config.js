@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         "gray-850": "rgba(19, 30, 47, 1)",
-        light: "rgba(0, 0, 0, 0.75)",
+        light: "rgba(0, 0, 0, 0.5)",
+        dark: "#141414",
       },
       screens: {
         xs: "350px",

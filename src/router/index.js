@@ -8,7 +8,6 @@ import Messages from "../pages/Messages";
 import Notifications from "../pages/Notifications";
 import GetPost from "../pages/GetPost";
 import NotifyMessages from "../pages/NotifyMessages";
-import FindFriends from "../pages/FindFriends";
 import CreateProfile from "../pages/CreateProfile";
 import AddEducation from "../pages/AddEducation";
 import AddExperience from "../pages/AddExperience";
@@ -95,15 +94,6 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <GetPost />{" "}
-      </PrivateRoute>
-    ),
-  },
-
-  {
-    path: "/find-friends",
-    element: (
-      <PrivateRoute>
-        <FindFriends />
       </PrivateRoute>
     ),
   },

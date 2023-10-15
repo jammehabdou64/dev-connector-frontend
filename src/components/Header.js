@@ -12,7 +12,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <header className="w-full  border-b border-gray-500 z-30 text-white fixed top-0 bg-slate-900 shadow-lg">
+    <header className="w-full  border-b border-dark z-30 text-white fixed top-0 bg-black shadow-lg">
       <div className="max-w-6xl px-1 xs:px-2 mx-auto md:px-4 lg:px-12">
         <nav className="flex  py-2 items-center md:gap-4 lg:gap-1 sm:gap-0 justify-between">
           <Link
@@ -26,7 +26,7 @@ const Header = () => {
             <form
               action=""
               method="get"
-              className=" bg-gray-800 w-full p-[7px] rounded-full  "
+              className=" bg-dark w-full p-[7px] rounded-full  "
             >
               <input
                 type="search"

@@ -24,11 +24,11 @@ const Notification = ({ from, seen, type, createdAt, id, post }) => {
       onClick={(e) => updateNotificationSeen(e, id, from, post)}
     >
       <div
-        className={`flex w-full space-x-2 items-center p-2 ${
-          !seen ? "bg-gray-900" : "bg-slate-900"
+        className={`flex w-full gap-1 sm:gap-2 items-center p-1 sm:p-2 ${
+          !seen ? "bg-gray-900" : "bg-black"
         }`}
       >
-        <div className="w-[55px]">
+        <div className="w-[41px]">
           <img
             src={from?.avatar}
             alt={from?.name}
@@ -36,16 +36,16 @@ const Notification = ({ from, seen, type, createdAt, id, post }) => {
           />
         </div>
         <div className="w-full flex-1">
-          <div className="flex justify-between w-full text-sm">
-            <p className="mx-2">
-              {from?.name}{" "}
+          <div className="flex justify-between w-full items-center text-[15px]">
+            <p className=" sm:mx-2">
+              <span className="font-semibold mr-1"> {from?.name}</span>
               {type === "like" ? (
                 <span>Like your post</span>
               ) : (
                 <span>Comment on your post </span>
               )}
             </p>
-            <p className="text-sm">
+            <p className="hidden xs:block text-sm">
               <Moment format="DD-M-YYYY">{createdAt}</Moment>
             </p>
           </div>

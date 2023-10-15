@@ -69,7 +69,7 @@ const PostFeedModal = () => {
 
   return (
     <div className="bg-light px-2  xs:px-6 absolute z-[999] h-screen top w-full">
-      <div className=" w-full sm:w-[500px] lg:w-[600px] bg-gray-900 min-h-[300px] mx-auto mt-20 p-4">
+      <div className=" w-full sm:w-[500px] lg:w-[600px] bg-dark min-h-[300px] mx-auto mt-20 p-4">
         <div className="flex items-center justify-between  mb-3">
           <div className="flex items-center gap-3">
             <img
@@ -92,7 +92,7 @@ const PostFeedModal = () => {
         </div>
         <div className="my-3">
           <textarea
-            className=" h-[240px] p-2 outline-none w-full bg-gray-800"
+            className=" h-[240px] p-2 outline-none w-full bg-black"
             placeholder=" Write Something"
             name="text"
             value={formData.text}

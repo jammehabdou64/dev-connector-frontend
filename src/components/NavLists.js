@@ -1,16 +1,10 @@
-import {
-  HomeIcon,
-  EnvelopeIcon,
-  BellIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/outline";
+import { HomeIcon, EnvelopeIcon, BellIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchNotification } from "../features/notificationSlice";
 import { fetchMessage } from "../features/messageSlice";
-import { fetchFriendRequest } from "../features/FriendRequestSlice";
 import Modal from "./Modal";
 import { setModal } from "../features/modalSlice";
 
@@ -23,19 +17,16 @@ const NavLists = ({ cssStyle, run = false }) => {
   const {
     notification: { numsOfNotifications },
     message: { numsOfMessages },
-    friendRequest: { numsOfRequest },
   } = useSelector((state) => {
     return {
       notification: state.notification,
       message: state.message,
-      friendRequest: state.friendRequest,
     };
   });
   useEffect(() => {
     if (run) {
       dispatch(fetchNotification());
       dispatch(fetchMessage());
-      dispatch(fetchFriendRequest());
     }
   }, [dispatch, run]);
 
@@ -46,20 +37,6 @@ const NavLists = ({ cssStyle, run = false }) => {
       Icon: HomeIcon,
       nums: 0,
     },
-
-    {
-      name: "connect",
-      path: "/find-friends",
-      Icon: UserGroupIcon,
-      nums: numsOfRequest,
-    },
-
-    // {
-    //   name: "Jobs",
-    //   path: "/jobs",
-    //   Icon: BriefcaseIcon,
-    //   nums: 0,
-    // },
 
     {
       name: "Messages",
@@ -79,7 +56,10 @@ const NavLists = ({ cssStyle, run = false }) => {
     <ul className={cssStyle}>
       {navLists.map(({ name, path, Icon, nums }, index) => (
         <li key={index}>
-          <Link to={path}>
+          <Link
+            to={path}
+            className="hover:text-yellow-500 hover:transition-all"
+          >
             <span className="flex relative top-0 justify-center">
               {<Icon className="w-7 md:w-8 " />}{" "}
               <sup
@@ -94,7 +74,7 @@ const NavLists = ({ cssStyle, run = false }) => {
           </Link>
         </li>
       ))}
-      <li className="hidden sm:inline-block">
+      <li className="hidden sm:inline-block hover:text-yellow-500 transition-all">
         <div
           className="mt-[2px] relative left-0 top-0  cursor-pointer  "
           onClick={() => dispatch(setModal())}

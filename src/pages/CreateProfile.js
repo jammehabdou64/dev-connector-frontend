@@ -60,7 +60,7 @@ const CreateProfile = () => {
 
   return (
     <Layout>
-      <section className="w-full bg-slate-900  py-3 px-4">
+      <section className="w-full bg-black  py-3 px-4">
         <h2 className="text-center font-semibold text-lg my-3">
           Create Profile
         </h2>
@@ -75,7 +75,7 @@ const CreateProfile = () => {
                 onChange={onChangeHandler}
                 value={formData.status}
                 id="status"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
               >
                 <option value=""> Select Professional Stataus</option>
                 <option value="Developer"> Developer</option>
@@ -102,7 +102,7 @@ const CreateProfile = () => {
               <input
                 type="text"
                 placeholder="Company"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="company"
                 name="company"
                 onChange={onChangeHandler}
@@ -117,7 +117,7 @@ const CreateProfile = () => {
               <input
                 type="text"
                 placeholder="Website"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="website"
                 name="website"
                 onChange={onChangeHandler}
@@ -132,7 +132,7 @@ const CreateProfile = () => {
               <input
                 type="text"
                 placeholder="Location"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="location"
                 name="location"
                 onChange={onChangeHandler}
@@ -147,7 +147,7 @@ const CreateProfile = () => {
               <input
                 type="text"
                 placeholder="eg. PHP, JAVASCRIPT , PYTHON"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="skills"
                 name="skills"
                 onChange={onChangeHandler}
@@ -162,7 +162,7 @@ const CreateProfile = () => {
               <input
                 type="text"
                 placeholder="Github Username"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="github"
                 name="githubUsername"
                 onChange={onChangeHandler}
@@ -177,7 +177,7 @@ const CreateProfile = () => {
               <textarea
                 type="text"
                 placeholder="Tell us little about yourself"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="bio"
                 name="bio"
                 onChange={onChangeHandler}
@@ -186,7 +186,7 @@ const CreateProfile = () => {
             </div>
             <div className="my-5">
               <button
-                className="bg-slate-700 text-yellow-600 p-2 mr-2"
+                className="bg-dark text-yellow-600 p-2 mr-2"
                 onClick={(e) => showSocialNetwork(e)}
               >
                 Add Social Network Links
@@ -203,7 +203,7 @@ const CreateProfile = () => {
                   <input
                     type="text"
                     placeholder="Facebook url"
-                    className="p-2 outline-none bg-slate-800"
+                    className="p-2 outline-none bg-dark"
                     id="facebook"
                     name="facebook"
                     onChange={onChangeHandler}
@@ -217,7 +217,7 @@ const CreateProfile = () => {
                   <input
                     type="text"
                     placeholder="Twitter url"
-                    className="p-2 outline-none bg-slate-800"
+                    className="p-2 outline-none bg-dark"
                     id="twitter"
                     name="twitter"
                     onChange={onChangeHandler}
@@ -231,7 +231,7 @@ const CreateProfile = () => {
                   <input
                     type="text"
                     placeholder="Instagram url"
-                    className="p-2 outline-none bg-slate-800"
+                    className="p-2 outline-none bg-dark"
                     id="instagram"
                     name="instagram"
                     onChange={onChangeHandler}
@@ -245,7 +245,7 @@ const CreateProfile = () => {
                   <input
                     type="text"
                     placeholder="Linkedin url"
-                    className="p-2 outline-none bg-slate-800"
+                    className="p-2 outline-none bg-dark"
                     id="linkedin"
                     name="linkedin"
                     onChange={onChangeHandler}

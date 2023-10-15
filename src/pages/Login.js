@@ -34,13 +34,14 @@ const Login = () => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <div className=" md:px-0 w-full flex justify-center items-center h-screen bg-gray-900 ">
+    <div className="px-3 md:px-0 w-full flex justify-center items-center h-screen bg-dark ">
       <form
         action=""
         method="post"
-        className="w-full xs:w-[380px] sm:w-[400px] px-3 xs:px-6 md:px-3"
+        className="w-full bg-black text-white py-10 xs:w-[380px] sm:w-[400px] px-3 xs:px-6 md:px-10"
         onSubmit={(e) => submit(e)}
       >
+        <h1 className="text-center font-semibold text-3xl mb-5">Login</h1>
         <div className="flex flex-col">
           <label htmlFor="email" className="text-gray-200 my-1">
             Email
@@ -75,7 +76,7 @@ const Login = () => {
           <div>
             <input
               type="checkbox"
-              className="text-gray-200 "
+              className="text-gray-200 cursor-pointer"
               name=""
               id="remember-me"
             />
@@ -86,17 +87,9 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <div>
-            <Link
-              to={"/password-recovery"}
-              className="text-blue-400 text-[14.5px] xs:text-base "
-            >
-              forgetten password
-            </Link>
-          </div>
         </div>
         <div className="mt-2">
-          <button className="font-medium bg-yellow-500 text-gray-900 p-3 w-full rounded-md">
+          <button className="font-medium bg-yellow-500 text-black text-xl p-3 w-full rounded-md">
             Login
           </button>
         </div>

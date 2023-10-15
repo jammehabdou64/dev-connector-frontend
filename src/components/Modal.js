@@ -15,7 +15,7 @@ const Modal = () => {
     } catch (error) {}
   };
   return (
-    <div className="w-[200px] absolute mt-16 top-0 left-0 -ml-[10.6rem] z-40 bg-slate-900 shadow-xl h-fit min-h-[200px]">
+    <div className="w-[200px] absolute mt-16  text-white top-0 left-0 -ml-[10.6rem] z-40 bg-black shadow-xl h-fit min-h-[200px]">
       <div className="p-3">
         <h3 className="font-semibold my-2 text-xl">Settings</h3>
         <ul className="py-3">

@@ -1,9 +1,16 @@
 import { useSelector } from "react-redux";
+import Auth from "../utils/Auth";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const { auth } = useSelector((state) => state.auth);
+  const {
+    auth: { auth },
+    post: { posts },
+  } = useSelector((state) => state);
+
+  const user = new Auth(auth);
   return (
-    <div className="mt-5 hidden md:block py-5 px-1 bg-slate-900 shadow-2xl sticky top-4 w-[220px] h-fit">
+    <div className="mt-5 hidden md:block py-5 px-1 bg-black shadow-2xl sticky top-4 w-[220px] h-fit">
       <div className="user ">
         <div className="flex justify-center">
           <img
@@ -18,21 +25,23 @@ const Sidebar = () => {
           {auth?.user ? auth.user?.name : auth.name}
         </p>
       </div>
-      <div className="user-details">
-        <div className="flex justify-between hover:bg-gray-800 w-full px-3 cursor-pointer">
-          <p>Friends</p>
-          <p className="text-center text-yellow-500 ">
-            {auth.user ? auth.user?.friends.length : auth?.friends.length}
-          </p>
-        </div>
-        <div className="flex justify-between hover:bg-gray-800 w-full px-3 cursor-pointer my-2">
+      <div className="user-details py-2">
+        <Link
+          to={`/viewied-profile/${user.slug}/${user._id}`}
+          className="flex justify-between hover:bg-dark hover:transition-all w-full px-3 cursor-pointer my-2"
+        >
           <p>Viewied profile</p>
-          <p className="text-center text-yellow-500">2</p>
-        </div>
-        <div className="flex justify-between hover:bg-gray-800 w-full px-3 cursor-pointer my-2">
+          <p className="text-center text-yellow-500">{user.viewedProfile}</p>
+        </Link>
+        <Link
+          to={`/posts/${user.slug}/${user._id}`}
+          className="flex justify-between hover:bg-dark hover:transition-all w-full px-3 cursor-pointer my-2"
+        >
           <p>Posts</p>
-          <p className="text-center text-yellow-500">2</p>
-        </div>
+          <p className="text-center text-yellow-500">
+            {user.numbOfPosts(posts)}
+          </p>
+        </Link>
       </div>
     </div>
   );

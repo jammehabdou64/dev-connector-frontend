@@ -2,7 +2,7 @@ import React from "react";
 
 const GithubRepos = () => {
   return (
-    <div className=" p-2 mt-3 bg-slate-900">
+    <div className=" p-2 mt-3 bg-black">
       <div className="flex">
         <div className="flex-1">
           <p className="my-1 text-yellow-500  sm:text-lg">react_fileupload</p>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   ChatBubbleLeftEllipsisIcon,
-  UserIcon,
   CameraIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
@@ -31,7 +30,7 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
     } catch (error) {}
   };
   return (
-    <section className="flex px-6 py-5 bg-slate-900 justify-center items-center  flex-col">
+    <section className="flex px-6 py-5 bg-black justify-center items-center  flex-col mt-7">
       <div className="">
         <img
           alt="user-img"
@@ -72,14 +71,6 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
         <div>
           {!userData.checkIfMyProfile() ? (
             <div className="gap-2 my-2 py-3 flex-col flex sm:flex-row ">
-              <button
-                className={
-                  "bg-gray-800 items-center flex py-2 px-4 w-full sm:w-fit"
-                }
-              >
-                <UserIcon className="w-5" />{" "}
-                <span className="mx-1">Add friend</span>
-              </button>
               <Link
                 to={`/message/${userData.nameReplace()}/${userData.id()}`}
                 className={
@@ -87,7 +78,9 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
                 }
               >
                 <ChatBubbleLeftEllipsisIcon className="w-5" />
-                <span className="mx-1">Message</span>
+                <span className="mx-1 text-lg text-black font-medium">
+                  Message
+                </span>
               </Link>
             </div>
           ) : (

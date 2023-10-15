@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
   return incomingCall ? (
     <IncomingCall caller={callerInfo} />
   ) : (
-    <div className="w-full h-screen relative top-0 bg-gray-850 font-blink overflow-y-scroll text-white ">
+    <div className="w-full h-screen relative top-0 bg-dark font-blink overflow-y-scroll text-white ">
       <Header />
       {showPostFeedModal && <PostFeedModal />}
 

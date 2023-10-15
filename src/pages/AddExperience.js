@@ -47,7 +47,7 @@ const AddExperience = () => {
 
   return (
     <Layout>
-      <section className="w-full bg-slate-900  py-3 px-4">
+      <section className="w-full bg-black  py-3 px-4">
         <h2 className="text-center font-semibold text-lg my-3">
           Add An Experience
         </h2>
@@ -60,7 +60,7 @@ const AddExperience = () => {
               <input
                 type="text"
                 placeholder="Job title"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="title"
                 name="title"
                 onChange={onChangeHandler}
@@ -74,7 +74,7 @@ const AddExperience = () => {
               <input
                 type="text"
                 placeholder="Company"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="company"
                 name="company"
                 onChange={onChangeHandler}
@@ -88,7 +88,7 @@ const AddExperience = () => {
               <input
                 type="text"
                 placeholder="Job location"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="location"
                 name="location"
                 onChange={onChangeHandler}
@@ -101,7 +101,7 @@ const AddExperience = () => {
               </label>
               <input
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="from"
                 name="from"
                 onChange={onChangeHandler}
@@ -129,7 +129,7 @@ const AddExperience = () => {
               </label>
               <input
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="to"
                 name="to"
                 disabled={toDateDisabled ? "disabled" : ""}
@@ -143,7 +143,7 @@ const AddExperience = () => {
               </label>
               <textarea
                 type="date"
-                className="p-2 outline-none bg-slate-800"
+                className="p-2 outline-none bg-dark"
                 id="description"
                 name="description"
                 onChange={onChangeHandler}

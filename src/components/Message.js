@@ -25,7 +25,7 @@ const Message = ({ sender, seen, text, createdAt, id }) => {
     >
       <div
         className={`flex w-full space-x-2 items-center p-2 ${
-          !seen ? "bg-gray-900" : "bg-slate-900"
+          !seen ? "bg-black" : "bg-gray-950"
         }`}
       >
         <div className="w-[60px]">

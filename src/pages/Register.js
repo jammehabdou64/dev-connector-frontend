@@ -36,13 +36,14 @@ const Register = () => {
     return <Navigate replace to="/" />;
   }
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-900">
+    <div className="flex px-2 md:px-0 justify-center items-center h-screen bg-dark text-white">
       <form
         action=""
         method="post"
-        className="w-full xs:w-[400px] px-3"
+        className="w-full bg-black text-white py-10 xs:w-[380px] sm:w-[400px] px-3 xs:px-6 md:px-10"
         onSubmit={(e) => submit(e)}
       >
+        <h1 className="text-center font-semibold text-3xl mb-5">Register</h1>
         <div className="flex flex-col">
           <label htmlFor="full-name" className="text-gray-200 my-1">
             Full name

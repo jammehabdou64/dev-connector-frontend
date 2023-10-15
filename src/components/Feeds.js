@@ -25,7 +25,7 @@ const Feeds = () => {
     <Spinner />
   ) : (
     <div className="feeds-container w-full px-[6.5px] xs:px-4 sm:px-8 md:px-0 mx-auto md:mx-0 relative top-0 z-10  lg:w-[500px]  max-w-[520px] ">
-      <div className="post-container w-full py-3 px-3 sm:px-4 bg-slate-900">
+      <div className="post-container w-full py-3 px-3 sm:px-4 bg-black">
         <div className="flex mt-2 pt-2 gap-2 ">
           <img
             alt={auth?.user ? auth?.user.name : auth?.name}
@@ -35,14 +35,14 @@ const Feeds = () => {
 
           <div className="flex-1">
             <form action="" method="post" className="w-full relative top-0">
-              <input
+              <textarea
                 type="text"
                 name="text"
                 id=""
-                className="h-10 sm:h-11 w-full text-sm p-3 outline-none bg-gray-700 rounded-full"
+                className="h-10 sm:h-11 w-full text-sm p-3 outline-none bg-dark rounded-full"
                 placeholder="Write something"
                 onClick={() => dispatch(setPostFeedModal())}
-              />{" "}
+              />
             </form>
           </div>
         </div>
