@@ -14,28 +14,24 @@ const Sidebar = () => {
       <div className="user ">
         <div className="flex justify-center">
           <img
-            src={auth?.user ? auth.user?.avatar : auth.avatar}
+            src={user.avatar}
             width={70}
             height={70}
-            alt={auth?.user ? auth.user?.name : auth.name}
+            alt={user?.name}
             className="rounded-full w-[70px] h-[69px] object-fill"
           />
         </div>
-        <p className="text-center text-lg my-5 font-semibold">
-          {auth?.user ? auth.user?.name : auth.name}
-        </p>
+        <p className="text-center text-lg mt-5 font-semibold">{user?.name}</p>
       </div>
       <div className="user-details py-2">
+        <div className="w-full px-3 ">
+          <p className="text-center text-gray-200 mt-1 mb-4 text-sm">
+            {user.status}
+          </p>
+        </div>
         <Link
-          to={`/viewied-profile/${user.slug}/${user._id}`}
-          className="flex justify-between hover:bg-dark hover:transition-all w-full px-3 cursor-pointer my-2"
-        >
-          <p>Viewied profile</p>
-          <p className="text-center text-yellow-500">{user.viewedProfile}</p>
-        </Link>
-        <Link
-          to={`/posts/${user.slug}/${user._id}`}
-          className="flex justify-between hover:bg-dark hover:transition-all w-full px-3 cursor-pointer my-2"
+          to={`/posts/${user.slug}`}
+          className="flex justify-between hover:bg-dark hover:transition-all  w-full px-3 cursor-pointer my-2"
         >
           <p>Posts</p>
           <p className="text-center text-yellow-500">

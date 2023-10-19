@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { HeartIcon } from "@heroicons/react/24/solid";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { HeartIcon, TrashIcon } from "@heroicons/react/24/solid";
 import {
   ChatBubbleLeftEllipsisIcon,
   ShareIcon,
@@ -9,7 +9,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePost } from "../features/postSlice";
 import PostComments from "./Comment";
-import { putApi } from "../Api";
+import { deleteApi, putApi } from "../Api";
+import Auth from "../utils/Auth";
 
 const Post = ({
   video,
@@ -21,6 +22,7 @@ const Post = ({
   comments,
   likes,
   id,
+  cssMargin = "mt-8 mb-0",
 }) => {
   const { auth } = useSelector((state) => state.auth);
   const [toggleComment, setToggle] = useState(false);
@@ -60,8 +62,23 @@ const Post = ({
       }
     } catch (error) {}
   };
+
+  const user = new Auth(auth);
+
+  const navigate = useNavigate();
+  const url = useLocation();
+
+  const deletePost = async (postId) => {
+    try {
+      const { data } = await deleteApi(`/posts/${postId}`);
+      if (data?.success) {
+        return navigate(url.pathname);
+      }
+    } catch (error) {}
+  };
+
   return (
-    <div className="post mt-8 bg-black">
+    <div className={` ${cssMargin} post  bg-black`}>
       <div className="post-author px-3 py-4 ">
         <div className="post-author-details flex items-center justify-between ">
           <Link
@@ -82,6 +99,13 @@ const Post = ({
               </div>
             </div>
           </Link>
+          {author?._id === user?._id ? (
+            <div className="flex cursor-pointer relative top-0">
+              <TrashIcon className="w-5" onClick={() => deletePost(id)} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className={title ? "post-title mx-1 pt-1  text-[15px]" : "hidden"}>
@@ -152,8 +176,8 @@ const Post = ({
       </div>
       <div className="comment px-1 py-2 border-t  border-dark flex items-center justify-between">
         <img
-          alt={auth?.user ? auth?.user.name : auth?.name}
-          src={auth?.user ? auth?.user.avatar : auth.avatar}
+          alt={user.name}
+          src={user?.avatar}
           className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
         />
         <form
@@ -161,7 +185,7 @@ const Post = ({
           className="flex-1 px-2"
           onSubmit={(e) => {
             e.preventDefault();
-            return comment(id, auth?.user ? auth?.user : auth);
+            return comment(id, user);
           }}
         >
           <input

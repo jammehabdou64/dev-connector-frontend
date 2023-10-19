@@ -25,7 +25,7 @@ const Notification = ({ from, seen, type, createdAt, id, post }) => {
     >
       <div
         className={`flex w-full gap-1 sm:gap-2 items-center p-1 sm:p-2 ${
-          !seen ? "bg-gray-900" : "bg-black"
+          !seen ? "bg-black" : "bg-gray-950"
         }`}
       >
         <div className="w-[41px]">

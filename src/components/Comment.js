@@ -12,7 +12,7 @@ const Comment = ({ text, user, createdAt }) => {
           alt={user?.name}
           className="w-[30px] h-[30px] rounded-full"
         />
-        <div className="bg-slate-950 rounded-xl py-2  px-3">{text}</div>
+        <div className="bg-dark rounded-xl py-2  px-4">{text}</div>
       </div>
       <p className="text-xs -mt-1">
         <Moment format="DD-M-YYYY">{createdAt}</Moment>
