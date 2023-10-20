@@ -29,6 +29,7 @@ const GetPost = () => {
     <Layout>
       <div className=" w-full max-w-[390px] relative top-0 z-10   mx-auto   sm:w-[400px]   lg:max-w-[420px] ">
         <Post
+          cssMargin="mt-0"
           title={post?.title}
           author={post.author}
           comments={post.comments}

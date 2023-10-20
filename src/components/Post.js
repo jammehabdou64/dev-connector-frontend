@@ -63,7 +63,7 @@ const Post = ({
     } catch (error) {}
   };
 
-  const user = new Auth(auth);
+  const authUser = new Auth(auth);
 
   const navigate = useNavigate();
   const url = useLocation();
@@ -72,7 +72,7 @@ const Post = ({
     try {
       const { data } = await deleteApi(`/posts/${postId}`);
       if (data?.success) {
-        return navigate(url.pathname);
+        return navigate(`/post/delete?url=${url.pathname}`);
       }
     } catch (error) {}
   };
@@ -82,7 +82,7 @@ const Post = ({
       <div className="post-author px-3 py-4 ">
         <div className="post-author-details flex items-center justify-between ">
           <Link
-            to={`/profile/${author.name.replace(/\s/g, "-")}/${author._id}`}
+            to={`/profile/${author?.name?.replace(/\s/g, "-")}/${author?._id}`}
             className="flex items-center  flex-1 gap-3"
           >
             <img
@@ -92,14 +92,14 @@ const Post = ({
             />
             <div className="flex flex-col leading-[0] xs:flex-row xs:items-center gap-2">
               <h3 className="post-author-name font-semibold sm:text-lg  sm:font-medium">
-                {author.name}
+                {author?.name}
               </h3>
               <div className="text-sm">
                 <Moment fromNow>{createAt}</Moment>
               </div>
             </div>
           </Link>
-          {author?._id === user?._id ? (
+          {author?._id === authUser?._id ? (
             <div className="flex cursor-pointer relative top-0">
               <TrashIcon className="w-5" onClick={() => deletePost(id)} />
             </div>
@@ -145,14 +145,14 @@ const Post = ({
       )}
       <div className="flex p-4 justify-between bg-black post-reactions">
         <div className="flex gap-2 items-center">
-          {checkIfLike(auth?._id, likes) ? (
+          {checkIfLike(authUser?._id, likes) ? (
             <HeartIcon
-              onClick={() => like(id, auth)}
+              onClick={() => like(id, authUser)}
               className="w-5 text-red-600 cursor-pointer"
             />
           ) : (
             <HeartIcon
-              onClick={() => like(id, auth)}
+              onClick={() => like(id, authUser)}
               className="w-5 cursor-pointer"
             />
           )}
@@ -176,8 +176,8 @@ const Post = ({
       </div>
       <div className="comment px-1 py-2 border-t  border-dark flex items-center justify-between">
         <img
-          alt={user.name}
-          src={user?.avatar}
+          alt={authUser?.name}
+          src={authUser?.avatar}
           className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
         />
         <form
@@ -185,7 +185,7 @@ const Post = ({
           className="flex-1 px-2"
           onSubmit={(e) => {
             e.preventDefault();
-            return comment(id, user);
+            return comment(id, authUser);
           }}
         >
           <input

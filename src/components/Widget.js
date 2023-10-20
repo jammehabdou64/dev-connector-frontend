@@ -39,7 +39,7 @@ const Widget = () => {
                     <img
                       src={chat(message, auth)?.avatar}
                       alt="user-img"
-                      className="h-10 rounded-full"
+                      className="h-10 w-10 object-cover rounded-full"
                     />
                     <p className="font-medium text-xl">
                       {chat(message, auth)?.name}

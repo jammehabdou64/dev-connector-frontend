@@ -20,11 +20,11 @@ const Message = ({ sender, seen, text, createdAt, id }) => {
   return (
     <Link
       to={`/message/${sender?.name?.replace(/\s/g, "-")}/${sender?._id}`}
-      className=" block  cursor-pointer max-w-[400px] mt-1 mx-auto   sm:w-[400px]  md:w-[440px] lg:max-w-[475px]"
+      className=" block  cursor-pointer  mt-1 mx-auto px-3  xs:px-4 sm:px-10 md:px-3"
       onClick={(e) => updateMessageSeen(e, sender)}
     >
       <div
-        className={`flex w-full space-x-2 items-center p-2 ${
+        className={`flex w-full space-x-2 items-center py-4 px-2 ${
           !seen ? "bg-black" : "bg-gray-950"
         }`}
       >

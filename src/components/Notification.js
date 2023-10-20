@@ -17,32 +17,32 @@ const Notification = ({ from, seen, type, createdAt, id, post }) => {
       return navigate(`/post/${post}`);
     } catch (error) {}
   };
-  return (
+  return from?.name ? (
     <Link
       to={`/post/${id}`}
-      className=" block cursor-pointer max-w-[400px] mt-1 mx-auto   sm:w-[400px]  md:w-[440px] lg:max-w-[475px]"
+      className=" block cursor-pointer max-w-[400px] h-full border-b border-dark mx-auto   sm:w-[400px]  md:w-[440px] lg:max-w-[475px]"
       onClick={(e) => updateNotificationSeen(e, id, from, post)}
     >
       <div
-        className={`flex w-full gap-1 sm:gap-2 items-center p-1 sm:p-2 ${
+        className={`flex w-full gap-2 sm:gap-2 items-center py-5 px-2 ${
           !seen ? "bg-black" : "bg-gray-950"
         }`}
       >
-        <div className="w-[41px]">
+        <div className="w-[45px]">
           <img
             src={from?.avatar}
             alt={from?.name}
-            className="w-[40px] h-[40px] rounded-full"
+            className="w-[45px] h-[44px] object-cover rounded-full"
           />
         </div>
         <div className="w-full flex-1">
           <div className="flex justify-between w-full items-center text-[15px]">
-            <p className=" sm:mx-2">
-              <span className="font-semibold mr-1"> {from?.name}</span>
+            <p className=" sm:mx-2 flex flex-col">
+              <span className=" mr-1"> {from?.name}</span>
               {type === "like" ? (
-                <span>Like your post</span>
+                <span className="text-sm">Like your post</span>
               ) : (
-                <span>Comment on your post </span>
+                <span className="text-sm">Comment on your post </span>
               )}
             </p>
             <p className="hidden xs:block text-sm">
@@ -52,6 +52,8 @@ const Notification = ({ from, seen, type, createdAt, id, post }) => {
         </div>
       </div>
     </Link>
+  ) : (
+    ""
   );
 };
 

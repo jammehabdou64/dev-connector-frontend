@@ -63,7 +63,7 @@ const Messages = () => {
               <img
                 alt={user?.name}
                 src={user?.avatar}
-                className="w-[45px] h-[45px] rounded-full"
+                className="w-[45px] h-[45px] object-cover rounded-full"
               />
               <span className="text-lg ml-4">{user?.name}</span>
             </div>

@@ -5,13 +5,16 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
-import User from "../utils";
+// import User from "../utils";
 import { putApi } from "../Api";
 import { useDispatch } from "react-redux";
-import { updateAuth } from "../features/auth/authSlice";
+import { loadUser } from "../features/auth/authSlice";
+import Auth from "../utils/Auth";
 
-const UserProfile = ({ profileExist, profile, user, auth }) => {
-  const userData = new User(profileExist, profile, user, auth);
+const UserProfile = ({ profile, auth }) => {
+  // console.log({ auth, profile });
+  const authUser = new Auth(auth);
+  const userProfile = new Auth(profile);
   const [profileImage, setProfileImage] = useState("");
   const dispatch = useDispatch();
 
@@ -24,22 +27,29 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
       const { data } = await putApi("/auth/change-profile", formData);
       if (data.success) {
         setProfileImage("");
-        dispatch(updateAuth(data.message));
+        dispatch(loadUser());
         return;
       }
     } catch (error) {}
   };
+
+  // console.log(authUser);
+  // console.log(userProfile);
   return (
     <section className="flex px-6 py-5 bg-black justify-center items-center  flex-col mt-7">
       <div className="">
         <img
           alt="user-img"
-          src={userData.avatar()}
+          src={userProfile?.avatar}
           className="rounded-full border-4 border-yellow-500 w-[125px] h-[125px] md:w-[170px] md:h-[169px]"
         />
       </div>
 
-      <div className={userData.checkIfMyProfile() ? "block -mt-12" : "hidden"}>
+      <div
+        className={
+          userProfile?._id === authUser?._id ? "block -mt-12" : "hidden"
+        }
+      >
         <input
           type="file"
           className="hidden"
@@ -64,15 +74,15 @@ const UserProfile = ({ profileExist, profile, user, auth }) => {
       >
         change profile
       </button>
-      <h3 className="my-4 font-semibold text-2xl">{userData.name()}</h3>
-      <p className=" my-1 text-lg">{profile?.status}</p>
-      <p className="text-sm my-1">{profile?.location}</p>
+      <h3 className="my-4 font-semibold text-2xl">{userProfile?.name}</h3>
+      <p className=" my-1 text-lg">{userProfile?.status}</p>
+      <p className="text-sm my-1">{userProfile?.location}</p>
       <div className="flex">
         <div>
-          {!userData.checkIfMyProfile() ? (
+          {userProfile?._id !== authUser?._id ? (
             <div className="gap-2 my-2 py-3 flex-col flex sm:flex-row ">
               <Link
-                to={`/message/${userData.nameReplace()}/${userData.id()}`}
+                to={`/message/${userProfile?.slug}/${userProfile?._id}`}
                 className={
                   "text-gray-900 items-center flex  bg-yellow-500 py-2 px-4 w-full sm:w-fit"
                 }

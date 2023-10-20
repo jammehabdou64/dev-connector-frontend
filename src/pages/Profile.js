@@ -3,6 +3,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 
 import Header from "../components/Header";
 import SmallMediaNav from "../components/SmallMediaNav";
+import UserProfile from "../components/UserProfile";
 import { useSelector } from "react-redux";
 import { getApi } from "../Api";
 import { useParams } from "react-router-dom";
@@ -10,31 +11,26 @@ import Spinner from "../components/Spinner";
 import Education from "../components/Education";
 import Experience from "../components/Experience";
 import GithubRepos from "../components/GithubRepos";
-import UserProfile from "../components/UserProfile";
 
 const Profile = () => {
   const { id } = useParams();
   const { auth } = useSelector((state) => state.auth);
   const [profile, setProfile] = useState({});
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [profileExist, setProfileExist] = useState(false);
+  // const [profileExist, setProfileExist] = useState(false);
   useEffect(() => {
     const getProfile = async (id) => {
       try {
-        const { data } = await getApi(`/profile/${id}`);
-        if (data.success) {
-          setProfileExist(true);
+        const { data } = await getApi(`/profile/edit/${id}`);
+        if (data.success || data.success === null) {
           setProfile(data.message);
-          return setLoading(false);
+          return;
         }
-
-        if (data.success === null) {
-          setUser(data.message);
-          setProfileExist(false);
-          return setLoading(false);
-        }
-      } catch (error) {}
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
     };
 
     getProfile(id);
@@ -47,13 +43,8 @@ const Profile = () => {
       <Header />
 
       <main className="mt-10 md:px-9 px-[6.5px] xs:px-4 sm:px-10 pt-10 h-full overflow-y-scroll">
-        <div className="mx-auto h-[400px]   max-w-4xl">
-          <UserProfile
-            profile={profile}
-            profileExist={profileExist}
-            user={user}
-            auth={auth}
-          />
+        <div className="mx-auto h-[400px] max-w-4xl">
+          <UserProfile profile={profile} auth={auth} />
 
           <div className="bio bg-black mt-8 py-4 px-3 ">
             <h3 className=" py-2 mt-2 text-lg flex justify-center  text-yellow-500  font-medium md:font-semibold text-center md:text-xl">

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { postApi } from "../Api";
-import { useSelector } from "react-redux";
+import { getApi, postApi } from "../Api";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Auth from "../utils/Auth";
+import { loadUser } from "../features/auth/authSlice";
 
 const CreateProfile = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,8 @@ const CreateProfile = () => {
 
   useEffect(() => {
     const getProfile = async (auth) => {
-      const { data } = await getApi(`/profile/${auth}`);
+      const user = new Auth(auth);
+      const { data } = await getApi(`/profile/${user?._id}`);
       if (data.success) {
         const { message } = data;
         return setFormData({
@@ -45,12 +47,13 @@ const CreateProfile = () => {
         });
       }
     };
-    getProfile(user);
-  }, [user]);
+    getProfile(auth);
+  }, [auth]);
 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
+  const dispatch = useDispatch();
   const onChangeHandler = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -77,6 +80,7 @@ const CreateProfile = () => {
           instagram: "",
           linkedin: "",
         });
+        dispatch(loadUser());
         return navigate(`/profile/${user.slug}/${user._id}`);
       }
     } catch (error) {}

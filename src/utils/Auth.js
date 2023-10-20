@@ -4,8 +4,10 @@ class Auth {
     this._id = this.auth?._id;
     this.name = this.auth?.name;
     this.email = this.auth?.email;
-    this.slug = this.auth?.name.replace(/\s/g, "-");
+    this.location = this.auth?.location;
+    this.slug = this.name?.replace(/\s/g, "-");
     this.avatar = this.auth?.avatar;
+    this.status = auth?.user ? auth?.status : "";
     this.status = auth?.user ? auth?.status : "";
   }
 

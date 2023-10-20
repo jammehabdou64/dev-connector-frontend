@@ -9,6 +9,7 @@ import { fetchPosts } from "../features/postSlice";
 import Post from "./Post";
 import Spinner from "./Spinner";
 import { setPostFeedModal } from "../features/modalSlice";
+import Auth from "../utils/Auth";
 
 const Feeds = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ const Feeds = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
+  const authUser = new Auth(auth);
+
+  // console.log(authUser?.slug);
   return isLoading ? (
     <Spinner />
   ) : (
@@ -28,9 +32,9 @@ const Feeds = () => {
       <div className="post-container w-full py-3 px-3 sm:px-4 bg-black">
         <div className="flex mt-2 pt-2 gap-2 ">
           <img
-            alt={auth?.user ? auth?.user.name : auth?.name}
-            src={auth?.user ? auth?.user.avatar : auth.avatar}
-            className="w-[35px] h-[35px] sm:w-[40px] sm:h-[40px] object-center rounded-full"
+            alt={authUser?.name}
+            src={authUser?.avatar}
+            className="w-[35px] h-[35px] sm:w-[40px] sm:h-[40px] object-cover rounded-full"
           />
 
           <div className="flex-1">

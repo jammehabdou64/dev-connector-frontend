@@ -49,7 +49,7 @@ const Header = () => {
               <img
                 alt={auth?.user ? auth?.user.name : auth?.name}
                 src={auth?.user ? auth?.user.avatar : auth.avatar}
-                className="rounded-full w-9 h-9 object-center"
+                className="rounded-full w-9 h-9 object-cover"
               />
               {showModal ? <Modal /> : ""}
             </div>

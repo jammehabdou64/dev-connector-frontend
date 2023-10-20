@@ -13,6 +13,7 @@ import AddEducation from "../pages/AddEducation";
 import AddExperience from "../pages/AddExperience";
 import ChangePassword from "../pages/ChangePassword";
 import MyPosts from "../pages/MyPosts";
+import DeletePost from "../pages/DeletePost";
 // import VideoCall from "../pages/VideoCall";
 
 export const router = createBrowserRouter([
@@ -112,6 +113,14 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <MyPosts />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/post/delete",
+    element: (
+      <PrivateRoute>
+        <DeletePost />
       </PrivateRoute>
     ),
   },

@@ -18,7 +18,7 @@ const Sidebar = () => {
             width={70}
             height={70}
             alt={user?.name}
-            className="rounded-full w-[70px] h-[69px] object-fill"
+            className="rounded-full w-[70px] h-[69px] object-cover"
           />
         </div>
         <p className="text-center text-lg mt-5 font-semibold">{user?.name}</p>
