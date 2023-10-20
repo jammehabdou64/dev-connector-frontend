@@ -24,6 +24,30 @@ const CreateProfile = () => {
   const { auth } = useSelector((state) => state.auth);
   const user = new Auth(auth);
 
+  useEffect(() => {
+    const getProfile = async (auth) => {
+      const { data } = await getApi(`/profile/${auth}`);
+      if (data.success) {
+        const { message } = data;
+        return setFormData({
+          company: message?.company ? message.company : "",
+          website: message?.website ? message.website : "",
+          location: message?.location ? message.location : "",
+          status: message?.status ? message.status : "",
+          skills: message?.skills ? message.skills : "",
+          githubUsername: message?.githubUsername ? message.githubUsername : "",
+          bio: message?.bio ? message.bio : "",
+          youtube: message?.youtube ? message.youtube : "",
+          facebook: message?.facebook ? message.facebook : "",
+          twitter: message?.twitter ? message.twitter : "",
+          instagram: message?.instagram ? message.instagram : "",
+          linkedin: message?.linkedin ? message.linkedin : "",
+        });
+      }
+    };
+    getProfile(user);
+  }, [user]);
+
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
