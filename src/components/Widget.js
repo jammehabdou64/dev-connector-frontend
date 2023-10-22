@@ -41,9 +41,7 @@ const Widget = () => {
                       alt="user-img"
                       className="h-10 w-10 object-cover rounded-full"
                     />
-                    <p className="font-medium text-xl">
-                      {chat(message, auth)?.name}
-                    </p>
+                    <p className="text-lg">{chat(message, auth)?.name}</p>
                   </div>
                 </Link>
               </li>

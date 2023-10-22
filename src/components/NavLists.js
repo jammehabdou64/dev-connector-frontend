@@ -61,7 +61,7 @@ const NavLists = ({ cssStyle, run = false }) => {
             className="hover:text-yellow-500 hover:transition-all"
           >
             <span className="flex relative top-0 justify-center">
-              {<Icon className="w-7 md:w-8 " />}{" "}
+              {<Icon className="w-7 " />}{" "}
               <sup
                 className={`${
                   nums > 0 ? "bg-red-500  w-4 h-4 ro rounded-full" : ""

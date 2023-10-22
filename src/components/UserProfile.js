@@ -3,7 +3,7 @@ import {
   ChatBubbleLeftEllipsisIcon,
   CameraIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // import User from "../utils";
 import { putApi } from "../Api";
@@ -20,6 +20,9 @@ const UserProfile = ({ profile, auth }) => {
 
   const changeProfile = (e) => setProfileImage(e.target.files[0]);
 
+  const navigate = useNavigate();
+
+  const url = useLocation();
   const submit = async () => {
     try {
       const formData = new FormData();
@@ -28,13 +31,11 @@ const UserProfile = ({ profile, auth }) => {
       if (data.success) {
         setProfileImage("");
         dispatch(loadUser());
-        return;
+        return navigate(`/profile/update?url=${url.pathname}`);
       }
     } catch (error) {}
   };
 
-  // console.log(authUser);
-  // console.log(userProfile);
   return (
     <section className="flex px-6 py-5 bg-black justify-center items-center  flex-col mt-7">
       <div className="">
@@ -67,7 +68,7 @@ const UserProfile = ({ profile, auth }) => {
       <button
         className={
           profileImage
-            ? "block mt-5 bg-yellow-600 text-slate-950 rounded-md px-2 py-1"
+            ? "block mt-5 text-lg  bg-yellow-600 text-slate-950 rounded-md px-2 py-1"
             : "hidden"
         }
         onClick={submit}

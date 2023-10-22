@@ -94,7 +94,7 @@ const Post = ({
               <h3 className="post-author-name font-semibold sm:text-lg  sm:font-medium">
                 {author?.name}
               </h3>
-              <div className="text-sm">
+              <div className="text-xs">
                 <Moment fromNow>{createAt}</Moment>
               </div>
             </div>
@@ -117,12 +117,12 @@ const Post = ({
           <img
             src={image}
             alt={"post-img"}
-            className="max-h-[410px]  w-full"
+            className="max-h-[470px] object-cover w-full"
             width={300}
             height={300}
           />
         ) : video ? (
-          <video className="max-h-[410px]  w-full" controls>
+          <video className="max-h-[450px]  w-full" controls>
             <source src={video} />
           </video>
         ) : (
@@ -178,7 +178,7 @@ const Post = ({
         <img
           alt={authUser?.name}
           src={authUser?.avatar}
-          className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-center rounded-full"
+          className="w-[23px] h-[23px]  sm:mr-0 sm:w-[35px]  sm:h-[35px] object-cover rounded-full"
         />
         <form
           action=""

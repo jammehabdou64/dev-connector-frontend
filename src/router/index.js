@@ -14,6 +14,7 @@ import AddExperience from "../pages/AddExperience";
 import ChangePassword from "../pages/ChangePassword";
 import MyPosts from "../pages/MyPosts";
 import DeletePost from "../pages/DeletePost";
+import UpdateProfile from "../pages/UpdateProfile";
 // import VideoCall from "../pages/VideoCall";
 
 export const router = createBrowserRouter([
@@ -121,6 +122,15 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <DeletePost />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: "/profile/update",
+    element: (
+      <PrivateRoute>
+        <UpdateProfile />
       </PrivateRoute>
     ),
   },

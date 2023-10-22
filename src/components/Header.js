@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="w-full  border-b border-dark z-30 text-white fixed top-0 bg-black shadow-lg">
       <div className="max-w-6xl px-1 xs:px-2 mx-auto md:px-4 lg:px-12">
-        <nav className="flex  py-2 items-center md:gap-4 lg:gap-1 sm:gap-0 justify-between">
+        <nav className="flex  py-1 items-center md:gap-4 lg:gap-1 sm:gap-0 justify-between">
           <Link
             to={"/"}
             className="logo text-lg xs:text-xl lg:font-extrabold font-medium sm:font-semibold text-yellow-500 sm:text-2xl md:text-3xl lg:text-3xl"
@@ -32,7 +32,7 @@ const Header = () => {
                 type="search"
                 name=""
                 id=""
-                className="w-full xs:p-1 sm:p-[7px]  rounded-full outline-none bg-inherit"
+                className="w-full p-[5px]   rounded-full outline-none bg-inherit"
                 placeholder="search ...."
               />
             </form>
