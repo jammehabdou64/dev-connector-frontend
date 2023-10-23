@@ -68,7 +68,7 @@ const UserProfile = ({ profile, auth }) => {
       <button
         className={
           profileImage
-            ? "block mt-5 text-lg  bg-yellow-600 text-slate-950 rounded-md px-2 py-1"
+            ? "block mt-8 sm:mt-5 sm:text-lg  bg-yellow-600 text-slate-950 rounded-md px-2 py-1"
             : "hidden"
         }
         onClick={submit}

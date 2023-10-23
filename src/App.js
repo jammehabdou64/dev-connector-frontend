@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { useEffect } from "react";
 import { loadUser } from "./features/auth/authSlice";
-import { SocketProvider } from "./Provider/Socket";
 
 function App() {
   useEffect(() => {
@@ -13,9 +12,7 @@ function App() {
   }, []);
   return (
     <Provider store={store}>
-      <SocketProvider>
-        <RouterProvider router={router} />
-      </SocketProvider>
+      <RouterProvider router={router} />
     </Provider>
   );
 }

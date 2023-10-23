@@ -7,7 +7,7 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const redirectBack = () => {
-      return navigate(url);
+      return navigate(url ? url : "/");
     };
     redirectBack();
   }, [navigate, url]);

@@ -15,6 +15,7 @@ import ChangePassword from "../pages/ChangePassword";
 import MyPosts from "../pages/MyPosts";
 import DeletePost from "../pages/DeletePost";
 import UpdateProfile from "../pages/UpdateProfile";
+import Search from "../pages/Search";
 // import VideoCall from "../pages/VideoCall";
 
 export const router = createBrowserRouter([
@@ -131,6 +132,15 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <UpdateProfile />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: "/search",
+    element: (
+      <PrivateRoute>
+        <Search />
       </PrivateRoute>
     ),
   },

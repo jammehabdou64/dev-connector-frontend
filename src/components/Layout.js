@@ -3,32 +3,14 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Widget from "./Widget";
 import SmallMediaNav from "./SmallMediaNav";
-// import { useSocket } from "../Provider/Socket";
 import { useSelector } from "react-redux";
-// import IncomingCall from "./IncomingCall";
 import PostFeedModal from "./PostFeedModal";
 
 const Layout = ({ children }) => {
-  // const { socket } = useSocket();
-  // const [incomingCall, setIncomingCall] = useState(false);
-  // const [callerInfo, setCaller] = useState({});
-
   const {
-    // auth: { auth },
     modal: { showPostFeedModal },
   } = useSelector((state) => state);
-  // console.log({ postFeedModal });
 
-  // useEffect(() => {
-  //   socket.emit("user-join", auth);
-  //   socket.on("incoming-call", (data) => {
-  //     setCaller(data);
-  //     setIncomingCall(true);
-  //   });
-  // }, [socket, auth]);
-  // incomingCall ? (
-  //   <IncomingCall caller={callerInfo} />
-  // ) :
   return (
     <div className="w-full h-screen relative top-0 bg-dark font-blink overflow-y-scroll text-white ">
       <Header />

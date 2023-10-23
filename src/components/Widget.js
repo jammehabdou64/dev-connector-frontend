@@ -26,26 +26,24 @@ const Widget = () => {
       <div>
         <ul className="mt-3 py-3">
           {messages.map((message) => (
-            <div key={message._id}>
-              <li>
-                <Link
-                  to={`/message/${chat(message, auth)?.name?.replace(
-                    /\s/g,
-                    "-"
-                  )}/${chat(message, auth)?._id}`}
-                >
-                  {/* {console.log(chat(message, auth))} */}
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={chat(message, auth)?.avatar}
-                      alt="user-img"
-                      className="h-10 w-10 object-cover rounded-full"
-                    />
-                    <p className="text-lg">{chat(message, auth)?.name}</p>
-                  </div>
-                </Link>
-              </li>
-            </div>
+            <li className="mb-2 " key={message?._id}>
+              <Link
+                to={`/message/${chat(message, auth)?.name?.replace(
+                  /\s/g,
+                  "-"
+                )}/${chat(message, auth)?._id}`}
+              >
+                {/* {console.log(chat(message, auth))} */}
+                <div className="flex items-center gap-2">
+                  <img
+                    src={chat(message, auth)?.avatar}
+                    alt="user-img"
+                    className="h-10 w-10 object-cover rounded-full"
+                  />
+                  <p className="text-lg">{chat(message, auth)?.name}</p>
+                </div>
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

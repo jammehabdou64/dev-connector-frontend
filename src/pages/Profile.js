@@ -16,9 +16,8 @@ const Profile = () => {
   const { id } = useParams();
   const { auth } = useSelector((state) => state.auth);
   const [profile, setProfile] = useState({});
-  // const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  // const [profileExist, setProfileExist] = useState(false);
+
   useEffect(() => {
     const getProfile = async (id) => {
       try {
@@ -35,23 +34,6 @@ const Profile = () => {
 
     getProfile(id);
   }, [id]);
-
-
-      const checkGithubProfile = async (profile) => {
-        try {
-          console.log(profile);
-          const { data } = await getApi(
-            `/profile/github/repos/${profile?.githubUsername}`
-          );
-          if (data.success) {
-            console.log(data.message);
-            setGithubRepo(data.message);
-          }
-        } catch (error) {
-        } finally {
-          setGitRepoLoading(false);
-        }
-      };
 
   return loading ? (
     <Spinner />
@@ -130,15 +112,12 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="flex-1 w-full pt-0 md:pt-1 github-repost-container">
+            <div className="flex-1 w-full pt-0 md:pt-1 github-repos-container">
               <div>
-                <h3 className="text-center text-yellow-500 text-lg font-medium md:font-semibold md:text-xl my-3 py-2">
+                <h3 className="text-center mb-5 text-yellow-500 text-2xl font-medium md:font-semibold md:text-xl md:my-3 md:py-2">
                   Github Reposts
                 </h3>
-
-                {[...new Array(4)].map((num, index) => (
-                  <GithubRepos key={index} />
-                ))}
+                <GithubRepos username={profile?.githubUsername} />
               </div>
               <div className="h-28 md:h-36 md:mt-32"></div>
             </div>

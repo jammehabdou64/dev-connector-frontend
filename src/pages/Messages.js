@@ -58,64 +58,6 @@ const Messages = () => {
   return loading ? (
     <Spinner />
   ) : (
-    // <Layout>
-    //   <div className="flex-1 w-full   px-2  mx-auto h-full items-center md:items-start  md:mt-10  flex   sm:px-6  ">
-    //     <div className="conversations w-full border-2 border-black">
-    //       <div className="conversations-header flex justify-between items-center p-3 bg-black w-full">
-    //         <div className="flex  items-center">
-    //           <img
-    //             alt={user?.name}
-    //             src={user?.avatar}
-    //             className="w-[45px] h-[45px] object-cover rounded-full"
-    //           />
-    //           <span className="text-lg ml-4">{user?.name}</span>
-    //         </div>
-    //       </div>
-    //       <ScrollToBottom
-    //         className="conversation-body h-[365px]  w-full "
-    //         initialScrollBehavior={"smooth"}
-    //       >
-    //         {messages?.map((message) => (
-    //           <div className="w-full" key={message?._id}>
-    //             {message.recipient === user?._id ? (
-    //               <div className="w-full  flex flex-col items-end">
-    //                 <span className="m-2 py-1 max-w-[75%] bg-yellow-500  px-3 rounded-md text-black">
-    //                   {message.text}
-    //                 </span>
-    //                 <span className="text-xs -mt-1 mr-2">
-    //                   <Moment format="hh:mm a">{message.createdAt}</Moment>
-    //                 </span>
-    //               </div>
-    //             ) : (
-    //               <div className="w-full flex flex-col items-start">
-    //                 <span className="m-2 max-w-[75%] py-1 px-3 rounded-md text-yellow-500 bg-black">
-    //                   {message.text}
-    //                 </span>
-    //                 <span className="text-xs -mt- ml-2">
-    //                   <Moment format="hh:mm a">{message.createdAt}</Moment>
-    //                 </span>
-    //               </div>
-    //             )}
-    //           </div>
-    //         ))}
-    //       </ScrollToBottom>
-    //       <form
-    //         method="post"
-    //         onSubmit={(e) => submit(e)}
-    //         className="conversation-footer bg-black  h-[60px] px-2 "
-    //       >
-    //         <input
-    //           type="text"
-    //           placeholder="send message .."
-    //           className="w-full rounded-full px-3 bg-inherit py-3 text-lg outline-none h-full "
-    //           name="text"
-    //           value={text}
-    //           onChange={(e) => setText(e.target.value)}
-    //         />{" "}
-    //       </form>
-    //     </div>
-    //   </div>
-    // </Layout>
     <div className="w-full h-screen relative top-0 bg-dark font-blink overflow-y-scroll text-white ">
       <Header />
 
@@ -125,7 +67,7 @@ const Messages = () => {
           <div className="h-full flex-1  w-full ">
             {/*  */}
             <div className="flex-1 w-full   px-2  mx-auto h-full items-center md:items-start md:mt-7 flex   sm:px-6  ">
-              <div className="conversations w-full border-2 border-black">
+              <div className="conversations w-full border-8 border-t-0 border-b-0 border-black">
                 <div className="conversations-header flex justify-between items-center p-3 bg-black w-full">
                   <div className="flex  items-center">
                     <img
@@ -137,7 +79,7 @@ const Messages = () => {
                   </div>
                 </div>
                 <ScrollToBottom
-                  className="conversation-body h-[300px] md:h-[365px]  w-full "
+                  className="conversation-body h-[300px] md:h-[365px]  w-full py-2"
                   initialScrollBehavior={"smooth"}
                 >
                   {messages?.map((message) => (

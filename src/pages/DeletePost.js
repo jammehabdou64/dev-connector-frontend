@@ -11,7 +11,7 @@ const DeletePost = () => {
   useEffect(() => {
     const redirectBack = () => {
       dispatch(fetchPosts());
-      return navigate(url);
+      return navigate(url ? url : "/");
     };
     redirectBack();
   }, [navigate, url, dispatch]);

@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   const user = new Auth(auth);
   return (
-    <div className="mt-5 hidden md:block py-5 px-1 bg-black shadow-2xl sticky top-4 w-[220px] h-fit">
+    <div className="mt-5 hidden md:block py-5 px-1 bg-black shadow-2xl sticky top-4 w-[250px] h-fit">
       <div className="user ">
         <div className="flex justify-center">
           <img
