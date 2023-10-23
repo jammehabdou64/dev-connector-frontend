@@ -36,6 +36,23 @@ const Profile = () => {
     getProfile(id);
   }, [id]);
 
+
+      const checkGithubProfile = async (profile) => {
+        try {
+          console.log(profile);
+          const { data } = await getApi(
+            `/profile/github/repos/${profile?.githubUsername}`
+          );
+          if (data.success) {
+            console.log(data.message);
+            setGithubRepo(data.message);
+          }
+        } catch (error) {
+        } finally {
+          setGitRepoLoading(false);
+        }
+      };
+
   return loading ? (
     <Spinner />
   ) : (
