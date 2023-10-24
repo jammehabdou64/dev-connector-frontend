@@ -47,7 +47,7 @@ const AddExperience = () => {
       }
     } catch (error) {
     } finally {
-      setDisabled;
+      setDisabled(false);
     }
   };
 

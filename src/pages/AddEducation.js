@@ -159,7 +159,7 @@ const AddEducation = () => {
                 <button
                   disabled={disabled}
                   className="p-2 bg-yellow-600 text-slate-950 w-full"
-                  onClick={submit}
+                  onClick={(e) => submit(e)}
                 >
                   submit
                 </button>
