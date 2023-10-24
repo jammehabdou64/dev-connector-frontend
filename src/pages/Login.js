@@ -11,6 +11,8 @@ const Login = () => {
     password: "",
   });
 
+  const [disabled, setDisabled] = useState(false);
+
   const { auth, isLoading } = useSelector((state) => state.auth);
   const inputHandler = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,6 +20,7 @@ const Login = () => {
   const submit = async (e) => {
     try {
       e.preventDefault();
+      setDisabled(true);
       const { data } = await postApi("/auth/login", formData);
       if (data.success) {
         localStorage.setItem("api-token", data.message);
@@ -25,6 +28,8 @@ const Login = () => {
       }
     } catch (error) {
       setError(error.response.data.error?.email);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -89,7 +94,10 @@ const Login = () => {
           </div>
         </div>
         <div className="mt-2">
-          <button className="font-medium bg-yellow-500 text-black text-xl p-3 w-full rounded-md">
+          <button
+            disabled={disabled}
+            className="font-medium bg-yellow-500 text-black text-xl p-3 w-full rounded-md"
+          >
             Login
           </button>
         </div>

@@ -39,6 +39,7 @@ const PostFeedModal = () => {
 
   const submit = async (e) => {
     try {
+      setDisableButton(true);
       const jsFormData = new FormData();
       jsFormData.append(
         "title",
@@ -64,6 +65,7 @@ const PostFeedModal = () => {
     } catch (error) {
     } finally {
       dispatch(setPostFeedModal());
+      setDisableButton(false);
     }
   };
 

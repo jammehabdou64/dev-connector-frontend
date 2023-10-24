@@ -23,8 +23,11 @@ const AddEducation = () => {
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
+  const [disabled, setDisabled] = useState(false);
+
   const submit = async (e) => {
     try {
+      setDisabled(true);
       e.preventDefault();
       const { data } = await putApi("/profile/education", formData);
       if (data.success) {
@@ -40,7 +43,10 @@ const AddEducation = () => {
 
         return navigate(`/profile/${user.slug}/${user._id}`);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setDisabled(false);
+    }
   };
 
   return (
@@ -151,6 +157,7 @@ const AddEducation = () => {
               </div>
               <div className="my-5">
                 <button
+                  disabled={disabled}
                   className="p-2 bg-yellow-600 text-slate-950 w-full"
                   onClick={submit}
                 >

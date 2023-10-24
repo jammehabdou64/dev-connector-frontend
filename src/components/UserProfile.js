@@ -12,20 +12,22 @@ import { loadUser } from "../features/auth/authSlice";
 import Auth from "../utils/Auth";
 
 const UserProfile = ({ profile, auth }) => {
-  // console.log({ auth, profile });
   const authUser = new Auth(auth);
   const userProfile = new Auth(profile);
   const [profileImage, setProfileImage] = useState("");
   const dispatch = useDispatch();
 
   const changeProfile = (e) => setProfileImage(e.target.files[0]);
+  const [disabled, setDisabled] = useState(false);
 
   const navigate = useNavigate();
 
   const url = useLocation();
   const submit = async () => {
     try {
+      setDisabled(true);
       const formData = new FormData();
+
       formData.append("profile", profileImage);
       const { data } = await putApi("/auth/change-profile", formData);
       if (data.success) {
@@ -33,7 +35,10 @@ const UserProfile = ({ profile, auth }) => {
         dispatch(loadUser());
         return navigate(`/profile/update?url=${url.pathname}`);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setDisabled(false);
+    }
   };
 
   return (
@@ -66,6 +71,7 @@ const UserProfile = ({ profile, auth }) => {
       </div>
 
       <button
+        disabled={disabled}
         className={
           profileImage
             ? "block mt-8 sm:mt-5 sm:text-lg  bg-yellow-600 text-slate-950 rounded-md px-2 py-1"

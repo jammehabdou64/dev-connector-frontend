@@ -17,10 +17,12 @@ const Register = () => {
   });
   const { auth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const [disabled, setDisabled] = useState(false);
+
   const submit = async (e) => {
     try {
+      setDisabled(true);
       e.preventDefault();
-      // console.log();
       const { data } = await postApi("/auth/register", formData);
       if (data.success) {
         localStorage.setItem("api-token", data.message);
@@ -29,6 +31,8 @@ const Register = () => {
       }
     } catch (error) {
       setError(error.response.data.error);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -100,7 +104,10 @@ const Register = () => {
         </div>
 
         <div className="mt-8">
-          <button className="bg-yellow-500 font-medium text-gray-900 p-3 w-full rounded-md">
+          <button
+            disabled={disabled}
+            className="bg-yellow-500 font-medium text-gray-900 p-3 w-full rounded-md"
+          >
             Register
           </button>
         </div>

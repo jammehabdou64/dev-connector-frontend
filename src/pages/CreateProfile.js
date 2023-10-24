@@ -46,9 +46,12 @@ const CreateProfile = () => {
   const onChangeHandler = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const [disabled, setDisabled] = useState(false);
+
   const submit = async (e) => {
     try {
       e.preventDefault();
+      setDisabled(true);
       const { data } = await postApi("/profile", formData);
       if (data.success) {
         setFormData({
@@ -68,7 +71,10 @@ const CreateProfile = () => {
         dispatch(loadUser());
         return navigate(`/profile/${user.slug}/${user._id}`);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setDisabled(false);
+    }
   };
 
   return (
@@ -201,6 +207,7 @@ const CreateProfile = () => {
 
               <div className="my-5">
                 <button
+                  disabled={disabled}
                   className="p-3 bg-yellow-600 text-slate-950 w-full"
                   onClick={submit}
                 >

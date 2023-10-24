@@ -31,15 +31,15 @@ const GetPost = () => {
         <Post
           cssMargin="mt-0"
           title={post?.title}
-          author={post.author}
-          comments={post.comments}
+          author={post?.author}
+          comments={post?.comments}
           image={post?.image}
-          createAt={post.createdAt}
-          likes={post.likes}
-          key={post._id}
+          createAt={post?.createdAt}
+          likes={post?.likes}
+          key={post?._id}
           text={post?.text}
           video={post?.video}
-          id={post._id}
+          id={post?._id}
         />
         <div className="h-24"></div>
       </div>

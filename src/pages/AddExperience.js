@@ -19,6 +19,8 @@ const AddExperience = () => {
     description: "",
   });
 
+  const [disabled, setDisabled] = useState(false);
+
   const [toDateDisabled, toggleDisabled] = useState(false);
 
   const onChangeHandler = (e) =>
@@ -27,6 +29,7 @@ const AddExperience = () => {
   const submit = async (e) => {
     try {
       e.preventDefault();
+      setDisabled(true);
       const { data } = await putApi("/profile/experience", formData);
       if (data.success) {
         console.log(data.message);
@@ -42,7 +45,10 @@ const AddExperience = () => {
         });
         return navigate(`/profile/${user.slug}/${user._id}`);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setDisabled;
+    }
   };
 
   return (
@@ -153,6 +159,7 @@ const AddExperience = () => {
               </div>
               <div className="my-5">
                 <button
+                  disabled={disabled}
                   className="p-2 bg-yellow-600 text-slate-950 w-full"
                   onClick={submit}
                 >

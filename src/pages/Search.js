@@ -32,7 +32,7 @@ const Search = () => {
     <Spinner />
   ) : (
     <Layout>
-      <div className="w-full">
+      <div className="w-full px-2 md:px-0">
         {searchUsers ? (
           searchUsers.map((user) => (
             <Link

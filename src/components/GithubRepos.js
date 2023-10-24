@@ -23,7 +23,7 @@ const GithubRepos = ({ username }) => {
     getRepos();
   }, [username]);
   return loading ? (
-    <h3 className="animate-pulse font-semibold text-lg">Loading</h3>
+    <h3 className="animate-pulse font-semibold text-center text-lg">Loading</h3>
   ) : (
     <div>
       {repos.length > 0 ? (
@@ -39,7 +39,7 @@ const GithubRepos = ({ username }) => {
                 {repo?.name}
               </p>
               <p className="py-1 text-sm">
-                {repo?.description || "No descriptions"}
+                {repo?.description || "This repo has no description"}
               </p>
             </div>
           </Link>

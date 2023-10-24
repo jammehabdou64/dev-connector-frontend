@@ -67,7 +67,7 @@ const Profile = () => {
             </ul>
           </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-3 mt-4 ">
-            <div className="w-full md:w-1/3 flex flex-col sm:flex-row  md:flex-col gap-5 pt-0 md:pt-14">
+            <div className="w-full md:w-1/3 flex flex-col sm:flex-row  md:flex-col gap-5 pt-0 md:py-14">
               <div className="w-full md:w-64 py-4 bg-black  mt-4 px-3 experience-container">
                 <div className="">
                   <h2 className=" py-2 my-1 text-lg font-medium md:font-semibold md:text-xl text-yellow-500 text-center">
@@ -114,12 +114,12 @@ const Profile = () => {
 
             <div className="flex-1 w-full pt-0 md:pt-1 github-repos-container">
               <div>
-                <h3 className="text-center mb-5 text-yellow-500 text-2xl font-medium md:font-semibold md:text-xl md:my-3 md:py-2">
+                <h3 className="text-center mb-5 text-yellow-500 text-2xl font-medium md:font-semibold  md:my-4 md:py-2">
                   Github Reposts
                 </h3>
                 <GithubRepos username={profile?.githubUsername} />
               </div>
-              <div className="h-28 md:h-36 md:mt-32"></div>
+              <div className="h-28 md:h-36 md:mt-52"></div>
             </div>
           </div>
         </div>

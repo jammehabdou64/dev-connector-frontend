@@ -11,14 +11,18 @@ const ChangePassword = () => {
     confirmPassword: "",
   });
 
+  const [disabled, setDisabled] = useState(false);
+
   const submit = async (e) => {
     try {
+      setDisabled(true);
       e.preventDefault();
-      // return console.log(formData);
       const { data } = await putApi("/auth/change-password", formData);
       console.log(data);
     } catch (error) {
       setError(error?.response?.data?.error);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -93,7 +97,10 @@ const ChangePassword = () => {
             </small>
           </div>
           <div className="mt-6 pb-5">
-            <button className="font-medium bg-yellow-500 text-gray-900 p-3 w-full rounded-md">
+            <button
+              disabled={disabled}
+              className="font-medium bg-yellow-500 text-gray-900 p-3 w-full rounded-md"
+            >
               Subimt
             </button>
           </div>
