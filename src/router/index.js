@@ -144,4 +144,9 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
   },
+
+  {
+    path: "*",
+    element: <Login />,
+  },
 ]);
