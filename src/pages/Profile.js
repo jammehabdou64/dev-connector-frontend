@@ -47,7 +47,7 @@ const Profile = () => {
 
           <div className="bio bg-black mt-8 py-4 px-3 ">
             <h3 className=" py-2 mt-2 text-lg flex justify-center  text-yellow-500  font-medium md:font-semibold text-center md:text-xl">
-              {profile?.user?.name}'s Bio{" "}
+              Summary
             </h3>
             <p className="px-2 text-center">{profile?.bio}</p>
           </div>
